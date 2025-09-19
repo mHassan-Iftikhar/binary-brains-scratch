@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Mediasans-Light';
+  src: url('/fonts/mediasans-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Regular';
+  src: url('/fonts/mediasans-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Bold';
+  src: url('/fonts/mediasans-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Ultra';
+  src: url('/fonts/mediasans-ultra.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Extended-Light';
+  src: url('/fonts/mediasansextended-light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Extended-Regular';
+  src: url('/fonts/mediasansextended-regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Extended-Bold';
+  src: url('/fonts/mediasansextended-bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mediasans-Extended-Ultra';
+  src: url('/fonts/mediasansextended-ultra.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --font-mediasans-light: 'Mediasans-Light', system-ui, -apple-system, sans-serif;
+  --font-mediasans-regular: 'Mediasans-Regular', system-ui, -apple-system, sans-serif;
+  --font-mediasans-bold: 'Mediasans-Bold', system-ui, -apple-system, sans-serif;
+  --font-mediasans-ultra: 'Mediasans-Ultra', system-ui, -apple-system, sans-serif;
+  --font-mediasans-extended-light: 'Mediasans-Extended-Light', system-ui, -apple-system, sans-serif;
+  --font-mediasans-extended-bold: 'Mediasans-Extended-Bold', system-ui, -apple-system, sans-serif;
+  --font-mediasans-extended-ultra: 'Mediasans-Extended-Ultra', system-ui, -apple-system, sans-serif;
+  
+  /* Custom colors */
+  --color-gray-nav: #ececec;
+  --color-black-nav: #121212;
+
+  --primary-color: #3371b7;
+}
+
+/* Utility classes for your custom fonts */
+.font-mediasans-light {
+  font-family: var(--font-mediasans-light);
+}
+
+.font-mediasans-regular {
+  font-family: var(--font-mediasans-regular);
+}
+
+.font-mediasans-bold {
+  font-family: var(--font-mediasans-bold);
+}
+
+.font-mediasans-ultra {
+  font-family: var(--font-mediasans-ultra);
+}
+
+.font-mediasans-extended-light {
+  font-family: var(--font-mediasans-extended-light);
+}
+
+.font-mediasans-extended-bold {
+  font-family: var(--font-mediasans-extended-bold);
+}
+
+.font-mediasans-extended-ultra {
+  font-family: var(--font-mediasans-extended-ultra);
+}
+
+/* Utility classes for custom colors */
+.bg-gray-nav {
+  background-color: var(--color-gray-nav);
+}
+
+.bg-black-nav {
+  background-color: var(--color-black-nav);
+}
+
+/* Navigation item hover styles */
+.nav-item {
+  background-color: var(--color-gray-nav);
+  color: inherit;
+  border-radius: 0.375rem; /* rounded */
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-item:hover {
+  background-color: var(--color-black-nav);
+  color: white;
+  border-radius: 9999px; /* rounded-full */
+}
+
+/* Dark theme navigation item hover styles */
+.nav-item-dark {
+  background-color: transparent;
+  color: white;
+  border-radius: 0.375rem; /* rounded */
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-item-dark:hover {
+  background-color: white;
+  color: black;
+  border-radius: 9999px; /* rounded-full */
+}
