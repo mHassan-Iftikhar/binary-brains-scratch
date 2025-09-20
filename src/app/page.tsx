@@ -1,10 +1,12 @@
 'use client';
 
+'use client';
+
 import React from 'react'
 import Home from '@/components/home/page'
 import About from '@/components/about/page'
 import ServicesPage from '@/components/services/page'
-import { Carousel_003 } from './projects/page'
+import ProjectsPage from './projects/page'
 
 const page = () => {
   // Add proper image data for the carousel
@@ -40,13 +42,7 @@ const page = () => {
       <Home />
       <About />
       <ServicesPage />
-      <Carousel_003
-        images={projectImages}
-        showPagination={true}
-        showNavigation={true}
-        autoplay={true}
-        className="bg-white py-20"
-      />
+      <ProjectsPage images={projectImages} />
     </>
   )
 }
