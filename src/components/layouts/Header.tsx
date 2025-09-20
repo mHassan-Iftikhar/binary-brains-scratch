@@ -109,7 +109,7 @@ const Header = () => {
             className={`text-sm px-4 py-2 rounded-full border shadow-lg transition-all duration-300 ease-in-out ${
               isDarkMode 
                 ? 'bg-white/90 backdrop-blur-md text-black border-white/20'
-                : 'bg-black/90 backdrop-blur-lg border border-white/20'
+                : 'bg-white/90 backdrop-blur-md text-black border-white/20'
             }`}
           >
             {companyInfo.logo} {companyInfo.name}

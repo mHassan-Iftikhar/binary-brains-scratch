@@ -22,33 +22,33 @@ const Skiper49 = () => {
   const images = [
     {
       src: "/images/01.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 1",
     },
     {
       src: "/images/02.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 2",
     },
     {
       src: "/images/03.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 3",
     },
     {
       src: "/images/04.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 4",
     },
     {
       src: "/images/05.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 5",
     },
     {
       src: "/images/06.png",
-      alt: "Illustrations by my fav AarzooAly",
+      alt: "Project 6",
     },
   ];
 
   return (
     <div className="flex h-full w-full items-center justify-center overflow-hidden bg-[#f5f4f3]">
-      <Carousel_003 className="" images={images} showPagination loop />
+      <Carousel_003 className="" images={images} showPagination loop autoplay />
     </div>
   );
 };
@@ -74,16 +74,20 @@ const Carousel_003 = ({
 }) => {
   const css = `
   .Carousal_003 {
-    width: 100%;
-    height: 350px;
+    width: 100vw;
+    height: 70vh;
     padding-bottom: 50px !important;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
   }
   
   .Carousal_003 .swiper-slide {
     background-position: center;
     background-size: cover;
-    width: 300px;
-    height: 300px;
+    width: 40vw !important;
+    height: 60vh !important;
+    max-width: 40vw !important;
+    max-height: 60vh !important;
   }
 
   .swiper-pagination-bullet {
@@ -135,11 +139,10 @@ const Carousel_003 = ({
         delay: 0.5,
       }}
       className={cn(
-        "relative h-screen w-full max-w-6xl mx-auto px-5 py-10 mt-30",
+        "relative h-screen w-full mx-auto px-5 py-10 mt-30 overflow-hidden",
         className
       )}
     >
-
       <style>{css}</style>
 
       {/* Section Title */}
@@ -151,10 +154,10 @@ const Carousel_003 = ({
         >
           Our Projects
         </div>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <div className="text-gray-600 max-w-2xl text-xl mx-auto">
           Explore our portfolio of successful projects and creative solutions
           we&apos;ve delivered for our clients.
-        </p>
+        </div>
       </div>
 
       <motion.div
@@ -168,8 +171,8 @@ const Carousel_003 = ({
           autoplay={
             autoplay
               ? {
-                  delay: 3000,
-                  disableOnInteraction: false,
+                  delay: 1500,
+                  disableOnInteraction: true,
                 }
               : false
           }
@@ -179,7 +182,7 @@ const Carousel_003 = ({
           centeredSlides={true}
           loop={loop}
           coverflowEffect={{
-            rotate: 50,
+            rotate: 40,
             stretch: 0,
             depth: 100,
             modifier: 1,
@@ -204,17 +207,14 @@ const Carousel_003 = ({
           modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
         >
           {images.map((image, index) => (
-            <SwiperSlide
-              key={index}
-              className="rounded-lg overflow-hidden shadow-lg"
-            >
+            <SwiperSlide key={index} className="rounded-lg overflow-hidden shadow-lg">
               <img
                 className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 src={image.src}
                 alt={image.alt}
                 onError={(e) => {
                   // Fallback for missing images
-                  e.currentTarget.src = `https://via.placeholder.com/300x300/3b82f6/white?text=Project+${index + 1}`;
+                  e.currentTarget.src = `https://via.placeholder.com/400x600/3b82f6/white?text=Project+${index + 1}`;
                 }}
               />
             </SwiperSlide>

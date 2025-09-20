@@ -1,39 +1,38 @@
 'use client';
 
-'use client';
-
 import React from 'react'
 import Home from '@/components/home/page'
-import About from '@/components/about/page'
-import ServicesPage from '@/components/services/page'
-import ProjectsPage from './projects/page'
+import About from './about/page'
+import ServicesPage from './services/page'
+import Carousel_003 from './projects/page'
+import Footer from '@/components/layouts/Footer'
 
 const page = () => {
-  // Add proper image data for the carousel
+
   const projectImages = [
     {
       src: "/images/01.png",
-      alt: "Project 1 - Web Development",
+      alt: "Project 1",
     },
     {
       src: "/images/02.png",
-      alt: "Project 2 - Mobile App",
+      alt: "Project 2",
     },
     {
       src: "/images/03.png",
-      alt: "Project 3 - UI/UX Design",
+      alt: "Project 3",
     },
     {
       src: "/images/04.png",
-      alt: "Project 4 - E-commerce",
+      alt: "Project 4",
     },
     {
       src: "/images/05.png",
-      alt: "Project 5 - Dashboard",
+      alt: "Project 5",
     },
     {
       src: "/images/06.png",
-      alt: "Project 6 - Landing Page",
+      alt: "Project 6",
     },
   ];
 
@@ -42,7 +41,8 @@ const page = () => {
       <Home />
       <About />
       <ServicesPage />
-      <ProjectsPage images={projectImages} />
+      <Carousel_003 images={projectImages} />
+      <Footer />
     </>
   )
 }
