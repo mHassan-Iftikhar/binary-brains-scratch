@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link';
@@ -46,6 +46,43 @@ const socialLinks = [
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Get all sections with white/light backgrounds
+      const whiteSections = document.querySelectorAll('[data-bg="white"], .bg-white, .bg-gray-50, .bg-gray-100, [class*="bg-white"]');
+      const header = document.querySelector('header');
+      
+      if (header) {
+        const headerRect = header.getBoundingClientRect();
+        const headerCenter = headerRect.top + headerRect.height / 2;
+        
+        let isOverWhiteSection = false;
+        
+        whiteSections.forEach(section => {
+          const sectionRect = section.getBoundingClientRect();
+          if (headerCenter >= sectionRect.top && headerCenter <= sectionRect.bottom) {
+            isOverWhiteSection = true;  
+          }
+        });
+        
+        setIsDarkMode(isOverWhiteSection);
+      }
+    };
+
+    // Check on mount
+    handleScroll();
+    
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleScroll);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleScroll);
+    };
+  }, []);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -60,66 +97,74 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <div className="w-full fixed top-0 left-0 z-99 selection:bg-white selection:text-black">
-        <div className='flex items-center justify-between px-4 md:px-8 py-4'>
-        <div className="text-sm bg-white px-4 py-2 text-black rounded">
-          {companyInfo.logo} {companyInfo.name}
-        </div>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:block">
-          <ul className="flex gap-2 text-sm">
-            {navigationItems.map((item) => (
-              <li
-                key={item.id}
-                className={`rounded px-4 py-2 cursor-pointer transition-all duration-300 ${
-                  item.isActive 
-                    ? 'bg-white text-black rounded-full' 
-                    : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:rounded-full'
-                }`}
-                onClick={() => handleNavClick(item.Link)}
-              >
-                {item.label}
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Desktop Button */}
-        <Button className='hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4'>
-          Let's Talk
-          <MoveUpRight size={16} />
-        </Button>
-
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden p-2 text-white"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle mobile menu"
+      <div className="w-full fixed top-0 left-0 z-50 selection:bg-white selection:text-black">
+        <header 
+          className={`rounded-full mx-4 my-2 flex items-center justify-between px-4 md:px-8 py-4 shadow-2xl transition-all duration-300 ease-in-out ${
+            isDarkMode 
+              ? 'bg-black/90 backdrop-blur-lg border border-white/20'
+              : 'bg-black/90 backdrop-blur-lg border border-white/20'
+          }`}
         >
-          <Menu size={24} />
-        </button>
-      </div>
+          <div 
+            className={`text-sm px-4 py-2 rounded-full border shadow-lg transition-all duration-300 ease-in-out ${
+              isDarkMode 
+                ? 'bg-white/90 backdrop-blur-md text-black border-white/20'
+                : 'bg-black/90 backdrop-blur-lg border border-white/20'
+            }`}
+          >
+            {companyInfo.logo} {companyInfo.name}
+          </div>
+          
+          {/* Desktop Navigation */}
+          <nav className="hidden md:block">
+            <ul className="flex gap-2 text-sm">
+              {navigationItems.map((item) => (
+                <li
+                  key={item.id}
+                  className={`rounded px-4 py-2 cursor-pointer transition-all duration-300 ${
+                    item.isActive 
+                      ? 'bg-white text-black rounded-full' 
+                      : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:rounded-full'
+                  }`}
+                  onClick={() => handleNavClick(item.Link)}
+                >
+                  {item.label}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {/* Desktop Button */}
+          <Button className='hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4'>
+            Let's Talk
+            <MoveUpRight size={16} />
+          </Button>
+
+          {/* Mobile Menu Button */}
+          <button 
+            className={`md:hidden p-2 rounded transition-colors duration-300 ${
+              isDarkMode 
+                ? 'text-white hover:bg-white/10' 
+                : 'text-black hover:bg-black/10'
+            }`}
+            onClick={toggleMobileMenu}
+            aria-label="Toggle mobile menu"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </header>
       </div>
 
       {/* Mobile Menu Modal */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black z-50 md:hidden selection:bg-white selection:text-black">
+        <div 
+          className={`fixed top-20 left-4 right-4 rounded-4xl shadow-2xl backdrop-blur-lg border transition-all duration-300 z-40 mt-2 ${
+            isDarkMode 
+              ? 'bg-black/90 border-white/20 text-white' 
+              : 'bg-white/90 border-black/10 text-black'
+          }`}
+        >
           <div className="flex flex-col h-full">
-            {/* Header */}
-            <div className="flex items-center justify-between px-4 py-4 border-b border-gray-700">
-              <div className="text-sm bg-white px-4 py-2 text-black rounded">
-                {companyInfo.logo} {companyInfo.name}
-              </div>
-              <Button
-                onClick={toggleMobileMenu}
-                className="p-2"
-                aria-label="Close mobile menu"
-              >
-                <X size={24} className="text-white" />
-              </Button>
-            </div>
-
             {/* Navigation */}
             <nav className="flex-1 px-4 py-8">
               <ul className="space-y-6">
@@ -127,8 +172,8 @@ const Header = () => {
                   <li key={item.id}>
                     <Link
                       href={item.Link}
-                      className={`text-4xl font-bold block py-2 ${item.isActive
-                          ? 'text-white border-b-2 border-white pb-4'
+                      className={`text-4xl font-regular block py-2 ${item.isActive
+                          ? 'text-zinc-300 border-b-2 border-white pb-4'
                           : 'text-gray-400'
                         }`}
                       onClick={() => handleNavClick(item.Link)}
@@ -186,4 +231,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default Header;

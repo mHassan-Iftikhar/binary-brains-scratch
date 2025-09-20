@@ -72,7 +72,7 @@
   --font-mediasans-extended-light: 'Mediasans-Extended-Light', system-ui, -apple-system, sans-serif;
   --font-mediasans-extended-bold: 'Mediasans-Extended-Bold', system-ui, -apple-system, sans-serif;
   --font-mediasans-extended-ultra: 'Mediasans-Extended-Ultra', system-ui, -apple-system, sans-serif;
-  
+
   /* Custom colors */
   --color-gray-nav: #ececec;
   --color-black-nav: #121212;
@@ -109,6 +109,28 @@
   font-family: var(--font-mediasans-extended-ultra);
 }
 
+/* HUMANE Font */
+@font-face {
+  font-family: 'Humane';
+  src: url('/Humane-Bold.ttf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-humane {
+  font-family: 'Humane', system-ui, -apple-system, sans-serif;
+}
+
+@font-face {
+  font-family: 'Thunder';
+  src: url('/Thunder-Black.ttf') format('opentype');
+}
+
+.font-thunder {
+  font-family: 'Thunder', system-ui, -apple-system, sans-serif;
+}
+
 /* Utility classes for custom colors */
 .bg-gray-nav {
   background-color: var(--color-gray-nav);
@@ -122,26 +144,30 @@
 .nav-item {
   background-color: var(--color-gray-nav);
   color: inherit;
-  border-radius: 0.375rem; /* rounded */
+  border-radius: 0.375rem;
+  /* rounded */
   transition: all 0.3s ease-in-out;
 }
 
 .nav-item:hover {
   background-color: var(--color-black-nav);
   color: white;
-  border-radius: 9999px; /* rounded-full */
+  border-radius: 9999px;
+  /* rounded-full */
 }
 
 /* Dark theme navigation item hover styles */
 .nav-item-dark {
   background-color: transparent;
   color: white;
-  border-radius: 0.375rem; /* rounded */
+  border-radius: 0.375rem;
+  /* rounded */
   transition: all 0.3s ease-in-out;
 }
 
 .nav-item-dark:hover {
   background-color: white;
   color: black;
-  border-radius: 9999px; /* rounded-full */
+  border-radius: 9999px;
+  /* rounded-full */
 }

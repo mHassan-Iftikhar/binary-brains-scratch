@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ClientWrapper from "@/components/ClientWrapper";
+// import ClientWrapper from "@/components/ClientWrapper";  
+import Header from "@/components/layouts/Header";
 
 export const metadata: Metadata = {
   title: "Binary Brains",
@@ -19,9 +20,10 @@ export default function RootLayout({
         style={{ fontFamily: 'poppins' }}
         suppressHydrationWarning
       >
-        <ClientWrapper>
+        {/* <ClientWrapper> */}
+          <Header />
           {children}
-        </ClientWrapper>
+        {/* </ClientWrapper> */}
       </body>
     </html>
   );
