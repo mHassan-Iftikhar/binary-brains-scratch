@@ -4,7 +4,7 @@ import React from 'react'
 import Home from '@/components/home/page'
 import About from './about/page'
 import ServicesPage from './services/page'
-import Carousel_003 from './projects/page'
+import ProjectsPage from './projects/page'
 import Footer from '@/components/layouts/Footer'
 
 const page = () => {
@@ -41,7 +41,7 @@ const page = () => {
       <Home />
       <About />
       <ServicesPage />
-      <Carousel_003 images={projectImages} />
+      <ProjectsPage />
       <Footer />
     </>
   )

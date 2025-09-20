@@ -18,7 +18,7 @@ import "swiper/css/effect-cards";
 
 import { cn } from "@/lib/utils";
 
-const Skiper49 = () => {
+export default function ProjectsPage() {
   const images = [
     {
       src: "/images/01.png",
@@ -51,9 +51,7 @@ const Skiper49 = () => {
       <Carousel_003 className="" images={images} showPagination loop autoplay />
     </div>
   );
-};
-
-export { Skiper49 };
+}
 
 const Carousel_003 = ({
   images,
@@ -234,5 +232,3 @@ const Carousel_003 = ({
     </motion.div>
   );
 };
-
-export default Carousel_003;
