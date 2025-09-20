@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Terminal } from 'lucide-react'
+import Image from 'next/image';
 
 const page = () => {
   return (
@@ -27,7 +28,7 @@ const page = () => {
         {/* Creative UI/UX Badge - First */}
         <div className='mb-6'>
           <div className='text-sm backdrop-blur-md border border-white/20 text-zinc-300 bg-white/10 px-4 py-2 rounded-full flex items-center gap-2'>
-            <img src="/ai.png" alt="logo" width={20} height={20} /> 
+            <Image src="/ai.png" alt="logo" width={20} height={20} /> 
             <span className="whitespace-nowrap">CREATIVE UI/UX & DEVELOPMENT</span>
           </div>
         </div>
@@ -55,7 +56,7 @@ const page = () => {
             <div className='flex items-center'>YOUR <span className='gradient-text inline-block relative border ml-2'>IDEA</span>
             </div>
             <div className='text-[20px] mt-4 backdrop-blur-md border border-white/20 text-zinc-300 bg-white/10 px-4 py-2 rounded-full flex items-center gap-2'>
-              <img src="/ai.png" alt="logo" width={24} height={24} /> 
+              <Image src="/ai.png" alt="logo" width={24} height={24} /> 
               <span>CREATIVE UI/UX & DEVELOPMENT</span>
             </div>
           </div>

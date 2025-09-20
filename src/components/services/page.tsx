@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Image from 'next/image';
 
 interface Service {
   id: number;
@@ -175,7 +176,7 @@ const ServicesPage = () => {
                 )}
               </div>
               {/* Actual image overlay */}
-              <img
+              <Image
                 src={service.src}
                 alt={service.alt}
                 className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${

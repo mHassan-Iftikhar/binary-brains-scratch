@@ -11,6 +11,7 @@ import {
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/effect-coverflow";
+import Image from "next/image";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper/css";
@@ -208,7 +209,7 @@ const Carousel_003 = ({
               key={index}
               className="rounded-lg overflow-hidden shadow-lg"
             >
-              <img
+              <Image
                 className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 src={image.src}
                 alt={image.alt}
