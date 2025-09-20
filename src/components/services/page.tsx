@@ -119,6 +119,22 @@ const ServicesPage = () => {
       color: "#FFD23F",
       description: "Brand identity and visual design"
     },
+    { 
+      id: 5, 
+      src: "/images/05.png", 
+      alt: "Digital Marketing", 
+      title: "MARKETING",
+      color: "#06FFA5",
+      description: "Digital marketing and social media"
+    },
+    { 
+      id: 6, 
+      src: "/images/06.png", 
+      alt: "E-commerce", 
+      title: "E-COMMERCE",
+      color: "#26C6DA",
+      description: "Online stores and e-commerce solutions"
+    },
   ];
 
   const handleServiceHover = (service: Service) => {
@@ -146,21 +162,14 @@ const ServicesPage = () => {
             onMouseEnter={() => handleServiceHover(service)}
             onMouseLeave={handleServiceLeave}
           >
-            <div className={`rounded-xl overflow-hidden transition-all duration-500 ${
+            <div className={`rounded-xl overflow-hidden transition-all duration-500 relative ${
               hoveredService?.id === service.id 
-                ? 'w-32 h-32 md:w-40 md:h-40 scale-100 z-20' 
+                ? 'w-32 h-32 md:w-40 md:h-40 scale-110 z-20' 
                 : 'w-16 h-16 md:w-20 md:h-20 hover:scale-80'
             }`}>
               {/* Fallback with gradient background if image fails */}
               <div 
-                className="w-full h-full flex items-center justify-center text-white font-bold text-xs relative"
-                style={{
-                  background: hoveredService?.id === service.id 
-                    ? service.color
-                    : `linear-gradient(135deg, 
-                        hsla(${220 + index * 20}, 70%, 50%, 0.8) 0%, 
-                        hsla(${260 + index * 20}, 70%, 60%, 0.9) 100%)`
-                }}
+                className="w-full h-full flex items-center justify-center text-white font-bold text-xs relative z-10"
               >
                 {hoveredService?.id === service.id ? (
                   <div className="text-center p-2">
@@ -175,11 +184,14 @@ const ServicesPage = () => {
                   service.title.split(' ')[0]
                 )}
               </div>
-              {/* Actual image overlay */}
+              
+              {/* Actual image overlay using fill */}
               <Image
                 src={service.src}
                 alt={service.alt}
-                className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-300 ${
+                fill
+                sizes="(max-width: 768px) 80px, 160px"
+                className={`object-cover transition-opacity duration-300 ${
                   hoveredService?.id === service.id ? 'opacity-20' : 'opacity-70 hover:opacity-90'
                 }`}
                 onError={(e) => {
@@ -196,7 +208,7 @@ const ServicesPage = () => {
       <div className="text-center relative z-0">
         <h1 
           ref={titleRef}
-          className="text-9xl md:text-8xl lg:text-9xl xl:text-[35rem] font-thunder transition-all duration-500"
+          className="text-9xl md:text-8xl lg:text-9xl xl:text-[30rem] font-thunder transition-all duration-500"
           style={{
             color: hoveredService ? hoveredService.color : '#FFFFFF',
           }}

@@ -19,43 +19,6 @@ import "swiper/css/effect-cards";
 
 import { cn } from "@/lib/utils";
 
-const Skiper49 = () => {
-  const images = [
-    {
-      src: "/images/01.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/02.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/03.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/04.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/05.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-    {
-      src: "/images/06.png",
-      alt: "Illustrations by my fav AarzooAly",
-    },
-  ];
-
-  return (
-    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-[#f5f4f3]">
-      <Carousel_003 className="" images={images} showPagination loop />
-    </div>
-  );
-};
-
-export { Skiper49 };
-
 const Carousel_003 = ({
   images,
   className,
@@ -73,78 +36,15 @@ const Carousel_003 = ({
   autoplay?: boolean;
   spaceBetween?: number;
 }) => {
-  const css = `
-  .Carousal_003 {
-    width: 100%;
-    height: 350px;
-    padding-bottom: 50px !important;
-  }
-  
-  .Carousal_003 .swiper-slide {
-    background-position: center;
-    background-size: cover;
-    width: 300px;
-    height: 300px;
-  }
-
-  .swiper-pagination-bullet {
-    background-color: #000 !important;
-    opacity: 0.5;
-  }
-
-  .swiper-pagination-bullet-active {
-    background-color: #3b82f6 !important;
-    opacity: 1;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-  }
-
-  .swiper-button-next:hover,
-  .swiper-button-prev:hover {
-    background: rgba(0, 0, 0, 0.8);
-  }
-`;
-
-  // Show placeholder if no images
-  if (!images || images.length === 0) {
-    return (
-      <div className={cn("flex items-center justify-center py-20", className)}>
-        <div className="text-center">
-          <h3 className="text-xl font-semibold text-gray-600 mb-2">
-            No Projects Available
-          </h3>
-          <p className="text-gray-500">
-            Projects will be displayed here once added.
-          </p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <motion.div
-      initial={{ opacity: 0, translateY: 20 }}
-      animate={{ opacity: 1, translateY: 0 }}
-      transition={{
-        duration: 0.3,
-        delay: 0.5,
-      }}
-      className={cn(
-        "relative h-screen w-full max-w-6xl mx-auto px-5 py-10 mt-40",
-        className
-      )}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.3 }}
+      className={cn("w-full", className)}
     >
-
-      <style>{css}</style>
-
-      {/* Section Title */}
-      <div className="text-center mb-10">
+      {/* Header */}
+      <div className="text-center mb-12 px-4">
         <div className="text-3xl md:text-[10rem] font-humane font-bold text-transparent mb-4"
           style={{
             WebkitTextStroke: '1px black',
@@ -186,38 +86,26 @@ const Carousel_003 = ({
             modifier: 1,
             slideShadows: true,
           }}
-          pagination={
-            showPagination
-              ? {
-                  clickable: true,
-                }
-              : false
-          }
-          navigation={
-            showNavigation
-              ? {
-                  nextEl: ".swiper-button-next",
-                  prevEl: ".swiper-button-prev",
-                }
-              : false
-          }
-          className="Carousal_003"
-          modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
+          pagination={showPagination ? { clickable: true } : false}
+          navigation={showNavigation}
+          modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+          className="mySwiper"
         >
           {images.map((image, index) => (
-            <SwiperSlide
+            <SwiperSlide 
               key={index}
-              className="rounded-lg overflow-hidden shadow-lg"
+              className="!w-auto"
+              style={{ width: 'auto' }}
             >
-              <Image
-                className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                src={image.src}
-                alt={image.alt}
-                onError={(e) => {
-                  // Fallback for missing images
-                  e.currentTarget.src = `https://via.placeholder.com/300x300/3b82f6/white?text=Project+${index + 1}`;
-                }}
-              />
+              <div className="relative w-[300px] h-[400px] md:w-[400px] md:h-[500px] rounded-2xl overflow-hidden shadow-2xl">
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 300px, 400px"
+                />
+              </div>
             </SwiperSlide>
           ))}
           {showNavigation && (
@@ -236,4 +124,52 @@ const Carousel_003 = ({
   );
 };
 
+// Main page component - this must be the default export
+const ProjectsPage = () => {
+  const images = [
+    {
+      src: "/images/01.png",
+      alt: "Project 1 - Web Development",
+    },
+    {
+      src: "/images/02.png",
+      alt: "Project 2 - Mobile App",
+    },
+    {
+      src: "/images/03.png",
+      alt: "Project 3 - UI/UX Design",
+    },
+    {
+      src: "/images/04.png",
+      alt: "Project 4 - E-commerce",
+    },
+    {
+      src: "/images/05.png",
+      alt: "Project 5 - Dashboard",
+    },
+    {
+      src: "/images/06.png",
+      alt: "Project 6 - Landing Page",
+    },
+  ];
+
+  return (
+    <div className="flex h-full w-full items-center justify-center overflow-hidden bg-[#f5f4f3] min-h-screen py-20">
+      <Carousel_003 
+        className="" 
+        images={images} 
+        showPagination 
+        loop 
+        autoplay
+        showNavigation
+        spaceBetween={30}
+      />
+    </div>
+  );
+};
+
+// Export the page component as default
+export default ProjectsPage;
+
+// Export the carousel component for use in other parts of the app
 export { Carousel_003 };
