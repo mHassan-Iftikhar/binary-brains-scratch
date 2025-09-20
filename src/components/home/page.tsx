@@ -82,7 +82,7 @@ const page = () => {
           {/* Tagline */}
           <div className='text-center text-xs text-white max-w-sm'>
             <Terminal className='inline-block mr-1 w-3 h-3 text-white' />
-            <span>"At Binary Brains, we turn ideas into powerful digital solutions—combining creativity and technology to build products that drive growth and impact."</span>
+            <span>&ldquo;At Binary Brains, we turn ideas into powerful digital solutions—combining creativity and technology to build products that drive growth and impact.&rdquo;</span>
           </div>
         </div>
 
@@ -98,7 +98,7 @@ const page = () => {
           {/* Tagline - Right */}
           <div className='w-[90vw] sm:w-[70vw] md:w-[50vw] lg:w-[40vw] text-xs sm:text-sm md:text-base lg:text-xl text-white text-right'>
             <Terminal className='inline-block mr-1 sm:mr-2 w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-white' />
-            "At Binary Brains, we turn ideas into powerful digital solutions—combining creativity and technology to build products that drive growth and impact."
+            &ldquo;At Binary Brains, we turn ideas into powerful digital solutions—combining creativity and technology to build products that drive growth and impact.&rdquo;
           </div>
         </div>
 

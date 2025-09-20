@@ -155,7 +155,7 @@ const ServicesPage = () => {
         ref={imagesRef}
         className="flex flex-wrap justify-center items-center gap-4 mb-16 max-w-4xl relative z-10"
       >
-        {serviceImages.map((service, index) => (
+        {serviceImages.map((service) => (
           <div
             key={service.id}
             className="service-image relative group cursor-pointer"

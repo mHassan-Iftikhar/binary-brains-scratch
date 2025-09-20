@@ -3,7 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Code, Users, Lightbulb, Trophy, ArrowRight, Star } from 'lucide-react';
+// import { Code, Users, Lightbulb, Trophy, ArrowRight, Star } from 'lucide-react';
 
 const About = () => {
     const aboutRef = useRef(null);
@@ -99,7 +99,7 @@ const About = () => {
                                     transition: 'color 0.3s'
                                 }}
                             >
-                                "At Binary Brains, we specialize in turning ideas into impactful digital solutions. Our team blends creativity with cutting-edge technology to design and build software that drives innovation, accelerates growth, and empowers businesses to thrive in the digital era."
+                                &ldquo;At Binary Brains, we specialize in turning ideas into impactful digital solutions. Our team blends creativity with cutting-edge technology to design and build software that drives innovation, accelerates growth, and empowers businesses to thrive in the digital era.&rdquo;
                             </h2>
                         </div>
 

@@ -136,7 +136,7 @@ const Header = () => {
 
           {/* Desktop Button */}
           <Button className='hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4'>
-            Let's Talk
+            Let&apos;s Talk
             <MoveUpRight size={16} />
           </Button>
 
@@ -168,7 +168,7 @@ const Header = () => {
             {/* Navigation */}
             <nav className="flex-1 px-4 py-8">
               <ul className="space-y-6">
-                {mobileNavigationItems.map((item, index) => (
+                {mobileNavigationItems.map((item) => (
                   <li key={item.id}>
                     <Link
                       href={item.Link}
@@ -190,7 +190,7 @@ const Header = () => {
                   className='bg-white rounded px-6 py-6 text-black font-medium flex-1'
                   onClick={() => handleNavClick('#contact')}
                 >
-                  LET'S TALK
+                  LET&apos;S TALK
                 </Button>
               </div>
             </nav>

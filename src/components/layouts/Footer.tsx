@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Plus, ArrowUpRight, Linkedin, Facebook, Twitter } from 'lucide-react';
+import { Plus, ArrowUpRight } from 'lucide-react';
 
 const Footer = () => {
   return (
