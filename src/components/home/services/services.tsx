@@ -208,7 +208,7 @@ const ServicesPage = () => {
       <div className="text-center relative z-0">
         <h1 
           ref={titleRef}
-          className="text-9xl md:text-8xl lg:text-9xl xl:text-[30rem] font-thunder transition-all duration-500"
+          className="text-[8rem] sm:text-[14rem] md:text-[20rem] lg:text-[24rem] xl:text-[30rem] font-thunder transition-all duration-500"
           style={{
             color: hoveredService ? hoveredService.color : '#FFFFFF',
           }}
@@ -220,13 +220,13 @@ const ServicesPage = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div 
-          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl transition-colors duration-500"
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl transition-colors duration-500 sm:w-80 sm:h-80 md:w-96 md:h-96"
           style={{
             backgroundColor: hoveredService ? `${hoveredService.color}20` : '#3B82F620'
           }}
         ></div>
         <div 
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl transition-colors duration-500"
+          className="absolute bottom-1/4 right-1/4 w-96 h-96 rounded-full blur-3xl transition-colors duration-500 sm:w-80 sm:h-80 md:w-96 md:h-96"
           style={{
             backgroundColor: hoveredService ? `${hoveredService.color}30` : '#8B5CF630'
           }}

@@ -91,7 +91,7 @@ const About = () => {
                         <div className="cool-split mb-12">
                             <h2
                                 ref={splitTextRef}
-                                className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
+                                className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-tight"
                                 style={{
                                     width: '85%',
                                     margin: '0 auto',
@@ -105,13 +105,13 @@ const About = () => {
 
                         {/* Subtitle that appears after text animation */}
                         <div className="subtitle-text opacity-0">
-                            <p className="text-xl md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-8">
+                            <p className="text-sm sm:text-base md:text-lg text-zinc-400 max-w-3xl mx-auto mb-8">
                                 At Binary Brains, we combine creativity and technology to build products that make a difference.
                             </p>
                             
                             {/* Optional: Add a progress indicator */}
                             <div className="flex justify-center mt-8">
-                                <div className="text-sm text-zinc-500 flex items-center gap-2">
+                                <div className="text-xs sm:text-sm md:text-sm text-zinc-500 flex items-center gap-2">
                                     <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
                                     Scroll to continue
                                 </div>

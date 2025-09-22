@@ -137,7 +137,7 @@ const Carousel_003 = ({
         delay: 0.5,
       }}
       className={cn(
-        "relative h-screen w-full mx-auto px-5 py-10 mt-30 overflow-hidden",
+        "relative h-[120vh] w-full mx-auto px-5 py-10 mt-30 overflow-hidden",
         className
       )}
     >
@@ -145,14 +145,14 @@ const Carousel_003 = ({
 
       {/* Section Title */}
       <div className="text-center mb-10">
-        <div className="text-3xl md:text-[10rem] font-humane font-bold text-transparent mb-4"
+        <div className="text-[6rem] sm:text-[8rem] md:text-[9rem] lg:text-[9rem] xl:text-[10rem] font-humane font-bold text-transparent mb-4"
           style={{
             WebkitTextStroke: '1px black',
           }}
         >
           Our Projects
         </div>
-        <div className="text-gray-600 max-w-2xl text-xl mx-auto">
+        <div className="text-gray-600 max-w-2xl text-xl sm:text-2xl mx-auto">
           Explore our portfolio of successful projects and creative solutions
           we&apos;ve delivered for our clients.
         </div>

@@ -1,8 +1,16 @@
 import React from 'react'
+import { Hero, About, Services, Projects } from '@/components/home'
+import { Footer } from '@/components/layouts'
 
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <Footer />
+    </>
   )
 }
 
