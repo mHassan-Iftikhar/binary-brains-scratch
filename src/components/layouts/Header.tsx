@@ -5,22 +5,18 @@ import { Button } from '@/components/ui/button'
 import { Menu, X } from 'lucide-react'
 import Link from 'next/link';
 import { MoveUpRight } from 'lucide-react';
+import { useRouter, usePathname } from 'next/navigation'
 
-// Navigation items configuration
+// Navigation items configuration (use real routes / hash anchors)
 const navigationItems = [
-  { id: 1, label: 'HOME', Link: '/', isActive: true },
-  { id: 2, label: 'ABOUT', Link: '/about', isActive: false },
-  { id: 3, label: 'SERVICES', Link: '/services', isActive: false },
-  { id: 4, label: 'WORKS', Link: '/works', isActive: false },
+  { id: 1, label: 'HOME', href: '/#home' },
+  { id: 2, label: 'ABOUT', href: '/#about' },
+  { id: 3, label: 'SERVICES', href: '/#services' },
+  { id: 4, label: 'WORKS', href: '/#works' },
 ]
 
-// Mobile menu navigation items (different from desktop)
-const mobileNavigationItems = [
-  { id: 1, label: 'HOME', Link: '#', isActive: true },
-  { id: 2, label: 'ABOUT', Link: '#', isActive: false },
-  { id: 3, label: 'SERVICES', Link: '#', isActive: false },
-  { id: 4, label: 'WORKS', Link: '#', isActive: false },
-]
+// Mobile menu navigation items
+const mobileNavigationItems = navigationItems
 
 // Company information
 const companyInfo = {
@@ -46,6 +42,9 @@ const socialLinks = [
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const router = useRouter()
+  const pathname = usePathname()
+  const [activeHref, setActiveHref] = useState<string>('/')
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -84,14 +83,58 @@ const Header = () => {
     };
   }, []);
 
+  // Track active section on the home page using IntersectionObserver
+  useEffect(() => {
+    // If we're not on the home page, active is just the pathname
+    if (pathname !== '/') {
+      setActiveHref(pathname ?? '/')
+      return
+    }
+
+    // Set HOME as default when on home page
+    setActiveHref('/#home')
+
+    const sectionIds = navigationItems
+      .map(i => i.href.startsWith('/#') ? i.href.replace('/#', '') : null)
+      .filter(Boolean) as string[]
+
+    const elements = sectionIds
+      .map(id => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el))
+
+    if (elements.length === 0) {
+      return
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      const visible = entries
+        .filter(e => e.isIntersecting)
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+      if (visible[0]) {
+        const id = visible[0].target.id
+        setActiveHref(`/#${id}`)
+      }
+    }, {
+      root: null,
+      rootMargin: '-10% 0px -70% 0px',
+      threshold: [0.1, 0.25, 0.5, 0.75]
+    })
+
+    elements.forEach(el => observer.observe(el))
+    return () => observer.disconnect()
+  }, [pathname])
+
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   const handleNavClick = (href: string) => {
-    // Handle navigation
-    console.log(`Navigating to: ${href}`)
-    setIsMobileMenuOpen(false)
+    try {
+      setActiveHref(href)
+      router.push(href)
+    } finally {
+      setIsMobileMenuOpen(false)
+    }
   }
 
   return (
@@ -119,23 +162,28 @@ const Header = () => {
           <nav className="hidden md:block">
             <ul className="flex gap-2 text-sm">
               {navigationItems.map((item) => (
-                <li
-                  key={item.id}
-                  className={`rounded px-4 py-2 cursor-pointer transition-all duration-300 ${
-                    item.isActive 
-                      ? 'bg-white text-black rounded-full' 
-                      : 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white hover:text-black hover:rounded-full'
-                  }`}
-                  onClick={() => handleNavClick(item.Link)}
+                <li key={item.id}>
+                  <Link
+                    href={item.href}
+                    className={`px-4 py-2 transition-all duration-300 backdrop-blur-md border ${
+                      item.href === activeHref
+                        ? 'bg-white text-black border-white rounded-full'
+                        : 'bg-white/10 text-white border-white/20 hover:bg-white hover:text-black hover:rounded-full'
+                    }`}
+                    onClick={(e) => {
+                      // Ensure active state updates immediately on desktop too
+                      setActiveHref(item.href)
+                    }}
                 >
                   {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </nav>
 
           {/* Desktop Button */}
-          <Button className='hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4'>
+          <Button onClick={() => handleNavClick('/contact')} className='hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4'>
             Let&apos;s Talk
             <MoveUpRight size={16} />
           </Button>
@@ -171,12 +219,11 @@ const Header = () => {
                 {mobileNavigationItems.map((item) => (
                   <li key={item.id}>
                     <Link
-                      href={item.Link}
-                      className={`text-4xl font-regular block py-2 ${item.isActive
-                          ? 'text-zinc-300 border-b-2 border-white pb-4'
-                          : 'text-gray-400'
-                        }`}
-                      onClick={() => handleNavClick(item.Link)}
+                      href={item.href}
+                      className={`text-4xl font-regular block py-2 transition-colors ${
+                        item.href === activeHref ? 'text-white border-b-2 border-white pb-4' : 'text-gray-400 hover:text-white'
+                      }`}
+                      onClick={() => handleNavClick(item.href)}
                     >
                       {item.label}
                     </Link>
@@ -212,16 +259,16 @@ const Header = () => {
               </div>
 
               {/* Contact Information */}
-              <p className="text-gray-400 text-xs">
+              <Link href="/contact" className="text-gray-400 text-xs">
                 {contactInfo.copyright}
                 <br />
                 Get in touch - {contactInfo.email}
-              </p>
+              </Link>
 
               {/* Owner Information */}
               <div className="mt-4">
-                <p className="text-white text-sm font-medium">{contactInfo.owner.name}</p>
-                <p className="text-gray-400 text-xs">{contactInfo.owner.title}</p>
+                <Link href="/contact" className="text-white text-sm font-medium">{contactInfo.owner.name}</Link>
+                <Link href="/contact" className="text-gray-400 text-xs">{contactInfo.owner.title}</Link>
               </div>
             </div>
           </div>

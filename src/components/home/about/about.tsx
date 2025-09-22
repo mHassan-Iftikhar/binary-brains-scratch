@@ -70,10 +70,10 @@ const About = () => {
     }, []);
 
     return (
-        <div ref={containerRef} className="relative">
+        <div ref={containerRef} className="relative" id='about'>
             <section
                 ref={aboutRef}
-                className="about relative min-h-screen bg-black text-white overflow-hidden"
+                className="relative min-h-screen bg-black text-white overflow-hidden"
                 data-bg="black"
             >
                 {/* Background Pattern */}

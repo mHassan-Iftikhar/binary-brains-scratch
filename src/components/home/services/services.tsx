@@ -114,7 +114,7 @@ const ServicesPage = () => {
     { 
       id: 4, 
       src: "/images/04.png", 
-      alt: "Branding", 
+      alt: "BRANDING", 
       title: "BRAND",
       color: "#FFD23F",
       description: "Brand identity and visual design"
@@ -122,18 +122,18 @@ const ServicesPage = () => {
     { 
       id: 5, 
       src: "/images/05.png", 
-      alt: "Digital Marketing", 
-      title: "MARKETING",
+      alt: "WORDPRESS", 
+      title: "WORDPRESS",
       color: "#06FFA5",
-      description: "Digital marketing and social media"
+      description: "Wordpress websites and customizations"
     },
     { 
       id: 6, 
       src: "/images/06.png", 
-      alt: "E-commerce", 
-      title: "E-COMMERCE",
+      alt: "UI/UX", 
+      title: "UI/UX",
       color: "#26C6DA",
-      description: "Online stores and e-commerce solutions"
+      description: "UI/UX design and development"
     },
   ];
 
@@ -149,6 +149,7 @@ const ServicesPage = () => {
     <div 
       ref={containerRef}
       className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden"
+      id='services'
     >
       {/* Service Images Grid */}
       <div 

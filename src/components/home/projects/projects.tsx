@@ -140,6 +140,7 @@ const Carousel_003 = ({
         "relative h-[120vh] w-full mx-auto px-5 py-10 mt-30 overflow-hidden",
         className
       )}
+      id='works'
     >
       <style>{css}</style>
 
