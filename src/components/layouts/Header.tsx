@@ -12,7 +12,7 @@ const navigationItems = [
   { id: 1, label: "HOME", href: "/#home" },
   { id: 2, label: "ABOUT", href: "/#about" },
   { id: 3, label: "SERVICES", href: "/#services" },
-  { id: 4, label: "WORKS", href: "/#works" },
+  { id: 4, label: "WORKS", href: "/works" },
 ];
 
 // Mobile menu navigation items
