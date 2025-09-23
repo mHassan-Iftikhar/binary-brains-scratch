@@ -1,15 +1,17 @@
-'use client';
+"use client";
 
-import React from 'react'
-import Home from '@/pages/Home'
+import React from "react";
+import { Hero, About, Services, Projects } from "@/components/home";
+import { Footer } from "@/components/layouts";
 
-const page = () => {
-
+export default function Page() {
   return (
     <>
-      <Home />
+      <Hero />
+      <About />
+      <Services />
+      <Projects />
+      <Footer />
     </>
-  )
+  );
 }
-
-export default page
