@@ -17,6 +17,7 @@ import "swiper/css";
 import "swiper/css/effect-cards";
 
 import { cn } from "@/lib/utils";
+import Image from "next/image";
 
 export default function ProjectsPage() {
   const images = [
@@ -207,14 +208,13 @@ const Carousel_003 = ({
         >
           {images.map((image, index) => (
             <SwiperSlide key={index} className="rounded-lg overflow-hidden shadow-lg">
-              <img
+              <Image
                 className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 src={image.src}
                 alt={image.alt}
-                onError={(e) => {
-                  // Fallback for missing images
-                  e.currentTarget.src = `https://via.placeholder.com/400x600/3b82f6/white?text=Project+${index + 1}`;
-                }}
+                width={800}
+                height={1200}
+                priority={index === 0}
               />
             </SwiperSlide>
           ))}
