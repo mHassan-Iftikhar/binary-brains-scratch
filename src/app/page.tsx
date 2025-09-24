@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Hero, About, Services, Projects } from "@/components/home";
+import Footer from "@/components/layouts/Footer";
 
 export default function Page() {
   return (
@@ -10,6 +11,7 @@ export default function Page() {
       <About />
       <Services />
       <Projects />
+      <Footer />
     </>
   );
 }

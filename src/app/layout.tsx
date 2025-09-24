@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 // import ClientWrapper from "@/components/ClientWrapper";
 import Header from "@/components/layouts/Header";
-// import Footer from "@/components/layouts/Footer";
 
 export const metadata: Metadata = {
   title: "Binary Brains",
@@ -24,7 +23,6 @@ export default function RootLayout({
         {/* <ClientWrapper> */}
         <Header />
         {children}
-        {/* <Footer /> */}
         {/* </ClientWrapper> */}
       </body>
     </html>
