@@ -1,77 +1,83 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: 'Mediasans-Light';
-  src: url('/fonts/mediasans-light.otf') format('opentype');
+  font-family: "Mediasans-Light";
+  src: url("/fonts/mediasans-light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Regular';
-  src: url('/fonts/mediasans-regular.otf') format('opentype');
+  font-family: "Mediasans-Regular";
+  src: url("/fonts/mediasans-regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Bold';
-  src: url('/fonts/mediasans-bold.otf') format('opentype');
+  font-family: "Mediasans-Bold";
+  src: url("/fonts/mediasans-bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Ultra';
-  src: url('/fonts/mediasans-ultra.otf') format('opentype');
+  font-family: "Mediasans-Ultra";
+  src: url("/fonts/mediasans-ultra.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Extended-Light';
-  src: url('/fonts/mediasansextended-light.otf') format('opentype');
+  font-family: "Mediasans-Extended-Light";
+  src: url("/fonts/mediasansextended-light.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Extended-Regular';
-  src: url('/fonts/mediasansextended-regular.otf') format('opentype');
+  font-family: "Mediasans-Extended-Regular";
+  src: url("/fonts/mediasansextended-regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Extended-Bold';
-  src: url('/fonts/mediasansextended-bold.otf') format('opentype');
+  font-family: "Mediasans-Extended-Bold";
+  src: url("/fonts/mediasansextended-bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Mediasans-Extended-Ultra';
-  src: url('/fonts/mediasansextended-ultra.otf') format('opentype');
+  font-family: "Mediasans-Extended-Ultra";
+  src: url("/fonts/mediasansextended-ultra.otf") format("opentype");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
 }
 
 :root {
-  --font-mediasans-light: 'Mediasans-Light', system-ui, -apple-system, sans-serif;
-  --font-mediasans-regular: 'Mediasans-Regular', system-ui, -apple-system, sans-serif;
-  --font-mediasans-bold: 'Mediasans-Bold', system-ui, -apple-system, sans-serif;
-  --font-mediasans-ultra: 'Mediasans-Ultra', system-ui, -apple-system, sans-serif;
-  --font-mediasans-extended-light: 'Mediasans-Extended-Light', system-ui, -apple-system, sans-serif;
-  --font-mediasans-extended-bold: 'Mediasans-Extended-Bold', system-ui, -apple-system, sans-serif;
-  --font-mediasans-extended-ultra: 'Mediasans-Extended-Ultra', system-ui, -apple-system, sans-serif;
+  --font-mediasans-light: "Mediasans-Light", system-ui, -apple-system,
+    sans-serif;
+  --font-mediasans-regular: "Mediasans-Regular", system-ui, -apple-system,
+    sans-serif;
+  --font-mediasans-bold: "Mediasans-Bold", system-ui, -apple-system, sans-serif;
+  --font-mediasans-ultra: "Mediasans-Ultra", system-ui, -apple-system,
+    sans-serif;
+  --font-mediasans-extended-light: "Mediasans-Extended-Light", system-ui,
+    -apple-system, sans-serif;
+  --font-mediasans-extended-bold: "Mediasans-Extended-Bold", system-ui,
+    -apple-system, sans-serif;
+  --font-mediasans-extended-ultra: "Mediasans-Extended-Ultra", system-ui,
+    -apple-system, sans-serif;
 
   /* Custom colors */
   --color-gray-nav: #ececec;
@@ -111,24 +117,28 @@
 
 /* HUMANE Font */
 @font-face {
-  font-family: 'Humane';
-  src: url('/Humane-Bold.ttf') format('opentype');
+  font-family: "Humane";
+  src: url("/Humane-Bold.ttf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 .font-humane {
-  font-family: 'Humane', system-ui, -apple-system, sans-serif;
+  font-family: "Humane", system-ui, -apple-system, sans-serif;
 }
 
 @font-face {
-  font-family: 'Thunder';
-  src: url('/Thunder-Black.ttf') format('opentype');
+  font-family: "Thunder";
+  src: url("/Thunder-Black.ttf") format("opentype");
 }
 
 .font-thunder {
-  font-family: 'Thunder', system-ui, -apple-system, sans-serif;
+  font-family: "Thunder", system-ui, -apple-system, sans-serif;
+}
+
+.font-lausanne {
+  font-family: "lausanne", system-ui, -apple-system, sans-serif;
 }
 
 /* Utility classes for custom colors */

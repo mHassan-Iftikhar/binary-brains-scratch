@@ -46,7 +46,7 @@ const Skiper53 = () => {
   ];
 
   return (
-    <div className="flex md:hidden h-full w-full items-center justify-center overflow-hidden">
+    <div className="flex md:hidden h-screen w-screen items-center justify-center overflow-hidden">
       <HoverExpand_002 className="" images={images} />
     </div>
   );
@@ -72,7 +72,7 @@ const HoverExpand_002 = ({
         delay: 0.5,
       }}
       className={cn(
-        "relative h-screen w-full max-w-6xl px-5 lg:hidden",
+        "relative h-screen w-full max-w-none px-5 lg:hidden overflow-x-hidden",
         className
       )}
     >
@@ -87,9 +87,9 @@ const HoverExpand_002 = ({
             <motion.div
               key={index}
               className="group relative cursor-pointer overflow-hidden rounded-3xl"
-              initial={{ height: "2.5rem", width: "24rem" }}
+              initial={{ height: "3rem", width: "28rem" }}
               animate={{
-                height: activeImage === index ? "24rem" : "2.5rem",
+                height: activeImage === index ? "28rem" : "3rem",
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={() => setActiveImage(index)}

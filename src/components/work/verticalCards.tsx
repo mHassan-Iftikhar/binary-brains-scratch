@@ -59,7 +59,7 @@ const Skiper52 = () => {
   ];
 
   return (
-    <div className="hidden md:flex h-screen w-full items-center justify-center overflow-hidden">
+    <div className="hidden md:flex h-screen w-screen items-center justify-center overflow-hidden overflow-x-hidden">
       <VerticalCards className="" images={images} />
     </div>
   );
@@ -84,7 +84,7 @@ const VerticalCards = ({
         duration: 0.3,
         delay: 0.5,
       }}
-      className={cn("relative w-full max-w-6xl px-5", className)}
+      className={cn("relative w-full max-w-7xl px-5", className)}
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -97,10 +97,10 @@ const VerticalCards = ({
             <motion.div
               key={index}
               className="relative cursor-pointer overflow-hidden rounded-3xl"
-              initial={{ width: "2.5rem", height: "20rem" }}
+              initial={{ width: "3.5rem", height: "24rem" }}
               animate={{
-                width: activeImage === index ? "24rem" : "5rem",
-                height: activeImage === index ? "24rem" : "24rem",
+                width: activeImage === index ? "28rem" : "7rem",
+                height: activeImage === index ? "28rem" : "28rem",
               }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
               onClick={() => setActiveImage(index)}
