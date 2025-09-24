@@ -6,10 +6,7 @@ import Image from "next/image";
 
 const page = () => {
   return (
-    <div
-      className="w-full h-screen flex flex-col justify-center items-center relative selection:bg-white selection:text-black overflow-hidden"
-      id="home"
-    >
+    <div className="w-full h-screen flex flex-col justify-center items-center relative selection:bg-white selection:text-black overflow-hidden">
       {/* Video Background */}
       <video
         autoPlay

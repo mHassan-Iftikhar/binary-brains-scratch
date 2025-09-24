@@ -118,12 +118,12 @@ const Contact = () => {
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-40 pb-16">
         {/* Giant Title */}
         <h1
-          className="select-none leading-none font-humane text-[20vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] text-transparent -mt-6"
+          className="select-none leading-none font-humane text-[20vw] sm:text-[16vw] md:text-[14vw] lg:text-[12vw] text-transparent -mt-6 mb-8"
           style={{
             WebkitTextStroke: "3px rgba(0, 0, 0, 0.1)",
           }}
         >
-          CONTACT US
+          LET&apos;S TALK
         </h1>
 
         {/* Content Row */}

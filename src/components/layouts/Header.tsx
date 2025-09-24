@@ -10,9 +10,9 @@ import { useRouter, usePathname } from "next/navigation";
 // Navigation items configuration (use real routes / hash anchors)
 const navigationItems = [
   { id: 1, label: "HOME", href: "/#home" },
-  { id: 2, label: "ABOUT", href: "/#about" },
-  { id: 3, label: "SERVICES", href: "/#services" },
-  { id: 4, label: "WORKS", href: "/#works" },
+  { id: 2, label: "ABOUT", href: "/about" },
+  { id: 3, label: "SERVICES", href: "/services" },
+  { id: 4, label: "WORKS", href: "/work" },
 ];
 
 // Mobile menu navigation items
@@ -26,8 +26,8 @@ const companyInfo = {
 
 // Contact information
 const contactInfo = {
-  email: "hello@binarybrains.co.uk",
-  copyright: "Copyright 2024. All rights reserved.",
+  email: "binarybrainsofficial@gmail.com",
+  copyright: "Copyright 2025. All rights reserved.",
   owner: {
     name: "Binary Brains",
     title: "Creative director and brand consultant.",
@@ -97,10 +97,10 @@ const Header = () => {
     }
 
     // Set HOME as default when on home page
-    setActiveHref("/#home");
+    setActiveHref("/home");
 
     const sectionIds = navigationItems
-      .map((i) => (i.href.startsWith("/#") ? i.href.replace("/#", "") : null))
+      .map((i) => (i.href.startsWith("/") ? i.href.replace("/", "") : null))
       .filter(Boolean) as string[];
 
     const elements = sectionIds
@@ -118,7 +118,7 @@ const Header = () => {
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
         if (visible[0]) {
           const id = visible[0].target.id;
-          setActiveHref(`/#${id}`);
+          setActiveHref(`/${id}`);
         }
       },
       {

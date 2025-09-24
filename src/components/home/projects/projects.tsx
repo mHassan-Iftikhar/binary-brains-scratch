@@ -141,15 +141,15 @@ const Carousel_003 = ({
         "relative h-[120vh] w-full mx-auto px-5 py-10 mt-30 overflow-hidden",
         className
       )}
-      id='works'
     >
       <style>{css}</style>
 
       {/* Section Title */}
       <div className="text-center mb-10">
-        <div className="text-[6rem] sm:text-[8rem] md:text-[9rem] lg:text-[9rem] xl:text-[10rem] font-humane font-bold text-transparent mb-4"
+        <div
+          className="text-[6rem] sm:text-[8rem] md:text-[9rem] lg:text-[9rem] xl:text-[10rem] font-humane font-bold text-transparent mb-4"
           style={{
-            WebkitTextStroke: '1px black',
+            WebkitTextStroke: "1px black",
           }}
         >
           Our Projects
@@ -207,7 +207,10 @@ const Carousel_003 = ({
           modules={[EffectCoverflow, Autoplay, Pagination, Navigation]}
         >
           {images.map((image, index) => (
-            <SwiperSlide key={index} className="rounded-lg overflow-hidden shadow-lg">
+            <SwiperSlide
+              key={index}
+              className="rounded-lg overflow-hidden shadow-lg"
+            >
               <Image
                 className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                 src={image.src}

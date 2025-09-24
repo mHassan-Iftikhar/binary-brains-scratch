@@ -151,7 +151,6 @@ const ServicesPage = () => {
     <div
       ref={containerRef}
       className="min-h-screen bg-black text-white flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden"
-      id="services"
     >
       {/* Service Images Grid */}
       <div
@@ -216,7 +215,7 @@ const ServicesPage = () => {
       <div className="text-center relative z-0">
         <h1
           ref={titleRef}
-          className="text-[8rem] sm:text-[14rem] md:text-[20rem] lg:text-[24rem] xl:text-[30rem] font-thunder transition-all duration-500"
+          className="text-[7.5rem] sm:text-[13.5rem] md:text-[19.5rem] lg:text-[24rem] xl:text-[30rem] font-thunder transition-all duration-500"
           style={{
             color: hoveredService ? hoveredService.color : "#FFFFFF",
           }}

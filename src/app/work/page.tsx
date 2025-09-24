@@ -1,13 +1,13 @@
 import React from "react";
-import { Skiper52 } from "@/components/works/works";
+import { ProjectHero, Skiper52, Skiper53 } from "@/components/work";
 import { Footer } from "@/components/layouts";
-// import { Technologies } from "@/components/works/technologies";
 
 const page = () => {
   return (
     <>
+      <ProjectHero />
       <Skiper52 />
-      {/* <Technologies /> */}
+      <Skiper53 />
       <Footer />
     </>
   );

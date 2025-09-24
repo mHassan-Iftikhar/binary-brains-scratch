@@ -60,7 +60,7 @@ const About = () => {
             duration: 0.5,
             ease: "power2.out",
           },
-          0.8 // Start this animation when text animation is 80% complete
+          5 // Start this animation when text animation is 80% complete
         );
       }
     });
@@ -71,7 +71,7 @@ const About = () => {
   }, []);
 
   return (
-    <div ref={containerRef} className="relative" id="about">
+    <div ref={containerRef} className="relative">
       <section
         ref={aboutRef}
         className="relative min-h-screen bg-black text-white overflow-hidden"
