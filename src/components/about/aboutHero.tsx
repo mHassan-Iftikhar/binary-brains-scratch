@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 const AboutHero = () => {
   return (
@@ -45,10 +46,12 @@ const AboutHero = () => {
           {/* Large photo spanning lower area */}
           <div className="col-span-12 md:col-span-9 md:col-start-4 mt-8">
             <div className="relative aspect-[16/9] w-full overflow-hidden">
-              <img
+              <Image
                 src="/images/04.png"
-                alt="Team at work"
-                className="h-full w-full object-cover rounded-4xl"
+                alt="Engines of Creation"
+                width={1920}
+                height={1080}
+                className="object-cover w-full h-full opacity-80"
               />
             </div>
           </div>

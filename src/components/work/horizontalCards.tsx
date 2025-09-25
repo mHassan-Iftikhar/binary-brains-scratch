@@ -2,10 +2,7 @@
 
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import React, { useRef } from "react";
-import "swiper/css";
-import "swiper/css/effect-creative";
-import "swiper/css/pagination";
-import "swiper/css/autoplay";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
 import HorizontalCards from "./verticalCards";
@@ -61,6 +58,17 @@ const HoverExpand_002 = ({
   images: { src: string; alt: string; code: string }[];
   className?: string;
 }) => {
+  // Create refs for each card
+  const cardRefs = images.map(() => useRef<HTMLDivElement>(null));
+  // Create inView for each ref
+  const inViews = cardRefs.map((ref) =>
+    useInView(ref, {
+      amount: 0.7,
+      once: true,
+      margin: "0px 0px -20% 0px",
+    })
+  );
+
   return (
     <motion.div
       initial={{ opacity: 0, translateY: 20 }}
@@ -81,56 +89,50 @@ const HoverExpand_002 = ({
         className="w-full"
       >
         <div className="relative w-full flex flex-col gap-1 pb-40">
-          {images.map((image, index) => {
-            const cardRef = useRef<HTMLDivElement | null>(null);
-            const inView = useInView(cardRef, {
-              amount: 0.7,
-              once: true,
-              margin: "0px 0px -20% 0px",
-            });
-
-            return (
-              <motion.div
-                key={index}
-                ref={cardRef}
-                className="group sticky top-0 overflow-hidden rounded-3xl w-full"
-                style={{ top: `${index * 3.5}rem` }}
-                initial={{ height: "3rem" }}
-                animate={{ height: inView ? "28rem" : "3rem" }}
-                transition={{ type: "tween", duration: 0.25, ease: "linear" }}
-              >
-                <AnimatePresence>
-                  {inView && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      className="absolute h-full w-full bg-gradient-to-t from-black/50 to-transparent"
-                    />
-                  )}
-                </AnimatePresence>
-                <AnimatePresence>
-                  {inView && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 20 }}
-                      className="absolute flex h-full w-full flex-col items-end justify-end px-4 pb-5"
-                    >
-                      <p className="text-left text-xs text-white/50">
-                        {image.code}
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-                <img
-                  src={image.src}
-                  className="size-full object-cover"
-                  alt={image.alt}
-                />
-              </motion.div>
-            );
-          })}
+          {images.map((image, index) => (
+            <motion.div
+              key={index}
+              ref={cardRefs[index]}
+              className="group sticky top-0 overflow-hidden rounded-3xl w-full"
+              style={{ top: `${index * 3.5}rem` }}
+              initial={{ height: "3rem" }}
+              animate={{ height: inViews[index] ? "28rem" : "3rem" }}
+              transition={{ type: "tween", duration: 0.25, ease: "linear" }}
+            >
+              <AnimatePresence>
+                {inViews[index] && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className="absolute h-full w-full bg-gradient-to-t from-black/50 to-transparent"
+                  />
+                )}
+              </AnimatePresence>
+              <AnimatePresence>
+                {inViews[index] && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    className="absolute flex h-full w-full flex-col items-end justify-end px-4 pb-5"
+                  >
+                    <p className="text-left text-xs text-white/50">
+                      {image.code}
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <Image
+                src={image.src}
+                className="size-full object-cover"
+                alt={image.alt}
+                fill
+                sizes="100vw"
+                priority={index === 0}
+              />
+            </motion.div>
+          ))}
         </div>
       </motion.div>
     </motion.div>

@@ -19,12 +19,6 @@ const navigationItems = [
 // Mobile menu navigation items
 const mobileNavigationItems = navigationItems;
 
-// Company information
-const companyInfo = {
-  name: "Binary Brains",
-  logo: "●",
-};
-
 // Contact information
 const contactInfo = {
   email: "binarybrainsofficial@gmail.com",

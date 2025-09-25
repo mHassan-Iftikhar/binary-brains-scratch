@@ -1,5 +1,5 @@
 import React from "react";
-import ServicesHero from "@/components/services/servicesHero";
+import SectionHero from "@/components/services/sectionHero";
 import { Header, Footer } from "@/components/layouts";
 import Services02 from "@/components/services/services02";
 
@@ -8,7 +8,7 @@ const page = () => {
     <>
       <Header />
       <Services02 />
-      <ServicesHero />
+      <SectionHero />
       <Footer />
     </>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 
 type InfoItem = { title: string; subtitle: string };
-type MediaItem = { src: string; alt: string };
 
 const Dot = () => (
   <span className="inline-block h-4 w-4 rounded-full bg-[#2E2E2E] border border-white/10" />
@@ -19,26 +18,20 @@ const InfoCard = ({ title, subtitle }: { title: string; subtitle: string }) => (
   </div>
 );
 
-const MediaCard = ({ src, alt }: MediaItem) => (
-  <div className="rounded-xl overflow-hidden border border-white/10 bg-[#161616]">
-    <img src={src} alt={alt} className="w-full h-40 md:h-56 object-cover" />
-  </div>
-);
-
-const TallMediaCard = ({ src, alt }: MediaItem) => (
+const TallMediaCard = ({ src, alt }: { src: string; alt: string }) => (
   <div className="rounded-xl overflow-hidden border border-white/10">
     <img
       src={src}
       alt={alt}
-      className="w-full h-[28rem] md:h-[34rem] object-cover"
+      className="w-full h-[18rem] md:h-[32rem] object-cover" // decreased height here
     />
   </div>
 );
 
 const SERVICES_CONTENT: {
-  left: { infos: InfoItem[]; media: MediaItem };
-  center: { tallMedia: MediaItem };
-  right: { media: MediaItem; infos: InfoItem[] };
+  left: { infos: InfoItem[] };
+  center: { tallMedia: { src: string; alt: string } };
+  right: { infos: InfoItem[] };
 } = {
   left: {
     infos: [
@@ -50,14 +43,20 @@ const SERVICES_CONTENT: {
         title: "WEB DESIGN & DEVELOPMENT",
         subtitle: "Design and develop modern websites",
       },
+      {
+        title: "SEO & DIGITAL MARKETING",
+        subtitle: "Boost your online presence and reach",
+      },
+      {
+        title: "E-COMMERCE SOLUTIONS",
+        subtitle: "Grow your business with online sales",
+      },
     ],
-    media: { src: "/images/06.png", alt: "Brand strategy visual" },
   },
   center: {
     tallMedia: { src: "/images/04.png", alt: "Hero sculpture visual" },
   },
   right: {
-    media: { src: "/images/03.png", alt: "UI/UX visual" },
     infos: [
       {
         title: "UI/UX & GRAPHIC DESIGN",
@@ -66,6 +65,14 @@ const SERVICES_CONTENT: {
       {
         title: "CONTENT CREATION",
         subtitle: "Create impactful and engaging content",
+      },
+      {
+        title: "APP DEVELOPMENT",
+        subtitle: "Build scalable and robust applications",
+      },
+      {
+        title: "SUPPORT & MAINTENANCE",
+        subtitle: "Keep your digital assets running smoothly",
       },
     ],
   },
@@ -93,10 +100,6 @@ const Services02 = () => {
             {SERVICES_CONTENT.left.infos.map((it, i) => (
               <InfoCard key={i} title={it.title} subtitle={it.subtitle} />
             ))}
-            <MediaCard
-              src={SERVICES_CONTENT.left.media.src}
-              alt={SERVICES_CONTENT.left.media.alt}
-            />
           </div>
 
           {/* Center column */}
@@ -109,10 +112,6 @@ const Services02 = () => {
 
           {/* Right column */}
           <div className="col-span-12 md:col-span-4 space-y-4 md:space-y-6">
-            <MediaCard
-              src={SERVICES_CONTENT.right.media.src}
-              alt={SERVICES_CONTENT.right.media.alt}
-            />
             {SERVICES_CONTENT.right.infos.map((it, i) => (
               <InfoCard key={i} title={it.title} subtitle={it.subtitle} />
             ))}

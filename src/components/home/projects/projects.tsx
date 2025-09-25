@@ -10,11 +10,6 @@ import {
   Pagination,
 } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
-import "swiper/css/navigation";
-import "swiper/css";
-import "swiper/css/effect-cards";
 
 import { cn } from "@/lib/utils";
 import Image from "next/image";
