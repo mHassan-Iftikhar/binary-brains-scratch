@@ -52,7 +52,7 @@ const TeamNames: React.FC = () => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
-    <section className="w-full bg-white px-10 pb-20">
+    <section className="w-full bg-white px-4 lg:px-10 pb-20">
       {members.map((m, i) => (
         <Row
           key={`${m.role}-${m.name}`}

@@ -100,13 +100,21 @@ const ServicesPage = () => {
     {
       id: 2,
       src: "/images/02.png",
-      alt: "Mobile Apps",
-      title: "MOBILE",
+      alt: "App Development",
+      title: "APP DEV",
       color: "#FF6B35",
       description: "iOS and Android applications",
     },
     {
       id: 3,
+      src: "/images/06.png",
+      alt: "UI/UX",
+      title: "UI/UX",
+      color: "#26C6DA",
+      description: "UI/UX design and development",
+    },
+    {
+      id: 4,
       src: "/images/03.png",
       alt: "UI/UX Design",
       title: "DESIGN",
@@ -114,28 +122,12 @@ const ServicesPage = () => {
       description: "User interface and experience design",
     },
     {
-      id: 4,
+      id: 5,
       src: "/images/04.png",
       alt: "BRANDING",
       title: "BRAND",
       color: "#FFD23F",
       description: "Brand identity and visual design",
-    },
-    {
-      id: 5,
-      src: "/images/05.png",
-      alt: "WORDPRESS",
-      title: "WORDPRESS",
-      color: "#06FFA5",
-      description: "Wordpress websites and customizations",
-    },
-    {
-      id: 6,
-      src: "/images/06.png",
-      alt: "UI/UX",
-      title: "UI/UX",
-      color: "#26C6DA",
-      description: "UI/UX design and development",
     },
   ];
 

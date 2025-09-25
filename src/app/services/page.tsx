@@ -1,12 +1,14 @@
 import React from "react";
-import Contact from "@/components/contact/contact";
+import ServicesHero from "@/components/services/servicesHero";
 import { Header, Footer } from "@/components/layouts";
+import Services02 from "@/components/services/services02";
 
 const page = () => {
   return (
     <>
       <Header />
-      <Contact />
+      <Services02 />
+      <ServicesHero />
       <Footer />
     </>
   );

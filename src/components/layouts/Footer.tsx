@@ -71,19 +71,25 @@ const Footer = () => {
             {/* Navigation */}
             <nav className="flex space-x-8">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/binary-brains/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
               >
                 LinkedIn
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
               >
                 Instagram
               </a>
               <a
-                href="#"
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
               >
                 X

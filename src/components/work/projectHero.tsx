@@ -60,7 +60,7 @@ const ProjectHero = () => {
       </div>
       <div
         ref={textRef}
-        className="will-change-transform absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 text-transparent font-bold font-thunder text-[13rem] md:text-[40rem] lg:text-[50rem] xl:text-[50rem]"
+        className="will-change-transform absolute left-1/2 top-[60%] -translate-x-1/2 -translate-y-1/2 text-transparent font-bold font-thunder text-[10rem] md:text-[40rem] lg:text-[50rem] xl:text-[50rem]"
         style={{ WebkitTextStroke: "1px black" }}
       >
         WORKS

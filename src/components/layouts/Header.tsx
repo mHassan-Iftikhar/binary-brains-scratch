@@ -1,15 +1,16 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
+import { createPortal } from "react-dom";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { MoveUpRight } from "lucide-react";
 import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 
 // Navigation items configuration (use real routes / hash anchors)
 const navigationItems = [
-  { id: 1, label: "HOME", href: "/#home" },
+  { id: 1, label: "HOME", href: "/" },
   { id: 2, label: "ABOUT", href: "/about" },
   { id: 3, label: "SERVICES", href: "/services" },
   { id: 4, label: "WORKS", href: "/work" },
@@ -46,6 +47,11 @@ const Header = () => {
   const pathname = usePathname();
   const [activeHref, setActiveHref] = useState<string>("/");
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -88,62 +94,23 @@ const Header = () => {
     };
   }, []);
 
-  // Track active section on the home page using IntersectionObserver
+  // Track active path
   useEffect(() => {
-    // If we're not on the home page, active is just the pathname
-    if (pathname !== "/") {
-      setActiveHref(pathname ?? "/");
-      return;
-    }
-
-    // Set HOME as default when on home page
-    setActiveHref("/home");
-
-    const sectionIds = navigationItems
-      .map((i) => (i.href.startsWith("/") ? i.href.replace("/", "") : null))
-      .filter(Boolean) as string[];
-
-    const elements = sectionIds
-      .map((id) => document.getElementById(id))
-      .filter((el): el is HTMLElement => Boolean(el));
-
-    if (elements.length === 0) {
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((e) => e.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-        if (visible[0]) {
-          const id = visible[0].target.id;
-          setActiveHref(`/${id}`);
-        }
-      },
-      {
-        root: null,
-        rootMargin: "-10% 0px -70% 0px",
-        threshold: [0.1, 0.25, 0.5, 0.75],
-      }
-    );
-
-    elements.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    setActiveHref(pathname || "/");
   }, [pathname]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleNavClick = (href: string) => {
-    try {
+  const closeMobileMenu = (): void => setIsMobileMenuOpen(false);
+  const handleNavigate =
+    (href: string) => (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault();
       setActiveHref(href);
       router.push(href);
-    } finally {
-      setIsMobileMenuOpen(false);
-    }
-  };
+      closeMobileMenu();
+    };
 
   return (
     <>
@@ -156,15 +123,14 @@ const Header = () => {
               : "bg-black/90 backdrop-blur-lg border border-white/20"
           }`}
         >
-          <div
-            className={`text-sm px-4 py-2 rounded-full border shadow-lg transition-all duration-300 ease-in-out ${
-              isDarkMode
-                ? "bg-white/90 backdrop-blur-md text-black border-white/20"
-                : "bg-white/90 backdrop-blur-md text-black border-white/20"
-            }`}
-          >
-            {companyInfo.logo} {companyInfo.name}
-          </div>
+          <Link href="/">
+            <Image
+              src="/logo.png"
+              alt="Binary Brains Logo"
+              width={30}
+              height={20}
+            />
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:block">
@@ -173,7 +139,7 @@ const Header = () => {
                 <li key={item.id}>
                   <Link
                     href={item.href}
-                    onClick={() => handleNavClick(item.href)}
+                    onClick={handleNavigate(item.href)}
                     className={`px-4 py-2 transition-all duration-300 backdrop-blur-md border ${
                       item.href === activeHref
                         ? "bg-white text-black border-white rounded-full"
@@ -188,13 +154,13 @@ const Header = () => {
           </nav>
 
           {/* Desktop Button */}
-          <Button
-            onClick={() => handleNavClick("/contact")}
+          <Link
+            href="/contact"
             className="hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4"
           >
             Let&apos;s Talk
             <MoveUpRight size={16} />
-          </Button>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -212,85 +178,89 @@ const Header = () => {
       </div>
 
       {/* Mobile Menu Modal */}
-      {isMobileMenuOpen && (
-        <div
-          className={`fixed top-20 left-4 right-4 rounded-4xl shadow-2xl backdrop-blur-lg border transition-all duration-300 z-40 mt-2 ${
-            isDarkMode
-              ? "bg-black/90 border-white/20 text-white"
-              : "bg-white/90 border-black/10 text-black"
-          }`}
-        >
-          <div className="flex flex-col h-full">
-            {/* Navigation */}
-            <nav className="flex-1 px-4 py-8">
-              <ul className="space-y-6">
-                {mobileNavigationItems.map((item) => (
-                  <li key={item.id}>
-                    <Link
-                      href={item.href}
-                      className={`text-4xl font-regular block py-2 transition-colors ${
-                        item.href === activeHref
-                          ? "text-white border-b-2 border-white pb-4"
-                          : "text-gray-400 hover:text-white"
-                      }`}
-                      onClick={() => handleNavClick(item.href)}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+      {isMobileMenuOpen &&
+        isMounted &&
+        createPortal(
+          <div
+            className={`fixed top-20 left-4 right-4 rounded-4xl shadow-2xl backdrop-blur-lg border transition-all duration-300 z-40 mt-2 ${
+              isDarkMode
+                ? "bg-black/90 border-white/20 text-white"
+                : "bg-white/90 border-black/10 text-black"
+            }`}
+          >
+            <div className="flex flex-col h-full">
+              {/* Navigation */}
+              <nav className="flex-1 px-4 py-8">
+                <ul className="space-y-6">
+                  {mobileNavigationItems.map((item) => (
+                    <li key={item.id}>
+                      <Link
+                        href={item.href}
+                        className={`text-4xl font-regular block py-2 transition-colors ${
+                          item.href === activeHref
+                            ? "text-white border-b-2 border-white pb-4"
+                            : "text-gray-400 hover:text-white"
+                        }`}
+                        onClick={handleNavigate(item.href)}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
 
-              {/* Mobile Get In Touch Button */}
-              <div className="mt-8">
-                <Button
-                  className="bg-white rounded px-6 py-6 text-black font-medium flex-1"
-                  onClick={() => handleNavClick("/contact")}
-                >
-                  LET&apos;S TALK
-                </Button>
-              </div>
-            </nav>
-
-            {/* Footer */}
-            <div className="px-4 py-8 border-t border-gray-700">
-              {/* Social Links */}
-              <div className="flex items-center gap-4 mb-4">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.id}
-                    href={social.href}
-                    className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
-                    aria-label={`Follow us on ${social.platform}`}
+                {/* Mobile Get In Touch Button */}
+                <div className="mt-8">
+                  <Link
+                    href="/contact"
+                    className="bg-white rounded px-6 py-6 text-black font-medium flex-1 block text-center"
+                    onClick={closeMobileMenu}
                   >
-                    <div className="w-4 h-4 bg-black rounded-full"></div>
-                  </a>
-                ))}
-              </div>
+                    LET&apos;S TALK
+                  </Link>
+                </div>
+              </nav>
 
-              {/* Contact Information */}
-              <Link href="/contact" className="text-gray-400 text-xs">
-                {contactInfo.copyright}
-                <br />
-                Get in touch - {contactInfo.email}
-              </Link>
+              {/* Footer */}
+              <div className="px-4 py-8 border-t border-gray-700">
+                {/* Social Links */}
+                <div className="flex items-center gap-4 mb-4">
+                  {socialLinks.map((social) => (
+                    <Link
+                      key={social.id}
+                      href={social.href}
+                      className="w-8 h-8 bg-white rounded-full flex items-center justify-center"
+                      aria-label={`Follow us on ${social.platform}`}
+                    >
+                      <div className="w-4 h-4 bg-black rounded-full"></div>
+                    </Link>
+                  ))}
+                </div>
 
-              {/* Owner Information */}
-              <div className="mt-4">
-                <Link
-                  href="/contact"
-                  className="text-white text-sm font-medium"
-                >
-                  {contactInfo.owner.name}
-                </Link>
+                {/* Contact Information */}
                 <Link href="/contact" className="text-gray-400 text-xs">
-                  {contactInfo.owner.title}
+                  {contactInfo.copyright}
+                  <br />
+                  Get in touch - {contactInfo.email}
                 </Link>
+
+                {/* Owner Information */}
+                <div className="mt-4">
+                  <Link
+                    href="/contact"
+                    className="text-white text-sm font-medium"
+                  >
+                    {contactInfo.owner.name}
+                  </Link>
+                  <Link href="/contact" className="text-gray-400 text-xs">
+                    {contactInfo.owner.title}
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
     </>
   );
 };
