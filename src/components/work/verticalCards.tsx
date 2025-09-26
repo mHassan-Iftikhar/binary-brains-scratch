@@ -126,10 +126,10 @@ const VerticalCards = ({
         {activeImage !== null && (
           <div className="w-full flex justify-center mt-20">
             <div className="bg-black/60 rounded-3xl p-4 max-w-md w-full">
-              <p className="text-left text-md text-white/50">
+              <p className="text-left text-lg text-white/50">
                 {images[activeImage].code}
               </p>
-              <p className="text-left text-lg text-white mt-2">
+              <p className="text-left text-xl text-white mt-2">
                 {images[activeImage].info}
               </p>
             </div>
