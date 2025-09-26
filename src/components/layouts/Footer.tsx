@@ -64,7 +64,7 @@ const Footer = () => {
                 href="mailto:binarybrainsofficial@gmail.com"
                 className="group flex items-center space-x-1 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium hover:text-gray-300 transition-colors cursor-pointer text-[#0f7ac6]"
               >
-                <Link className="cursor-pointer" href={"mailto:binarybrainsofficial@gmail.com"}>binarybrainsofficial@gmail.com</Link>
+                <a className="cursor-pointer" href={"mailto:binarybrainsofficial@gmail.com"}>binarybrainsofficial@gmail.com</a>
                 <ArrowUpRight className="h-4 w-4 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
