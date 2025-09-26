@@ -55,7 +55,7 @@ const ProjectHero = () => {
         ref={subtitleRef}
         className="will-change-transform flex items-center gap-2 absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2 font-poppins font-light text-sm md:text-2xl text-center"
       >
-        <div className="drop-shadow-xl shadow-[#0f7ac6] bg-[#0f7ac6] w-6 h-3 md:h-3 md:w-3 rounded-full"></div>
+        <div className="drop-shadow-xl shadow-[#0f7ac6] bg-[#0f7ac6] w-3 h-3 md:h-3 md:w-3 rounded-full"></div>
         Reliable software, beautifully designed, expertly built.
       </div>
       <div

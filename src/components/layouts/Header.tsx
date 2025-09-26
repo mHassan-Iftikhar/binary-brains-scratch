@@ -150,7 +150,7 @@ const Header = () => {
           {/* Desktop Button */}
           <Link
             href="/contact"
-            className="hidden md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4"
+            className="hidden !bg-white md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4"
           >
             Let&apos;s Talk
             <MoveUpRight size={16} />

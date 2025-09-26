@@ -1,5 +1,7 @@
 import React from "react";
 
+import Image from "next/image";
+
 type InfoItem = { title: string; subtitle: string };
 
 const Dot = () => (
@@ -19,11 +21,14 @@ const InfoCard = ({ title, subtitle }: { title: string; subtitle: string }) => (
 );
 
 const TallMediaCard = ({ src, alt }: { src: string; alt: string }) => (
-  <div className="rounded-xl overflow-hidden border border-white/10">
-    <img
+  <div className="relative rounded-xl overflow-hidden border border-white/10 h-[18rem] md:h-[32rem] w-full">
+    <Image
       src={src}
       alt={alt}
-      className="w-full h-[18rem] md:h-[32rem] object-cover" // decreased height here
+      fill
+      className="h-full w-full object-cover"
+      priority
+      sizes="(min-width: 768px) 32rem, 18rem"
     />
   </div>
 );
@@ -80,8 +85,8 @@ const SERVICES_CONTENT: {
 
 const Services02 = () => {
   return (
-    <section className="w-full h-screen flex flex-col items-center justify-center bg-[#0D0E10] text-white py-10 md:py-16">
-      <div className="mx-auto max-w-6xl px-4">
+    <section className="w-full min-h-screen flex flex-col items-center justify-center bg-[#0D0E10] text-white py-10 md:py-16">
+      <div className="mx-auto max-w-6xl px-4 w-full">
         <p className="text-center text-xs md:text-sm tracking-[0.2em] text-white/60">
           CREATED TO MAKE YOU STAND OUT WITH
         </p>
@@ -94,16 +99,16 @@ const Services02 = () => {
           </span>
         </h2>
 
-        <div className="mt-10 md:mt-14 grid grid-cols-12 gap-4 md:gap-6">
+        <div className="mt-10 md:mt-14 grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 w-full">
           {/* Left column */}
-          <div className="col-span-12 md:col-span-4 space-y-4 md:space-y-6">
+          <div className="md:col-span-4 space-y-4 md:space-y-6">
             {SERVICES_CONTENT.left.infos.map((it, i) => (
               <InfoCard key={i} title={it.title} subtitle={it.subtitle} />
             ))}
           </div>
 
           {/* Center column */}
-          <div className="col-span-12 md:col-span-4">
+          <div className="md:col-span-4 flex items-center justify-center">
             <TallMediaCard
               src={SERVICES_CONTENT.center.tallMedia.src}
               alt={SERVICES_CONTENT.center.tallMedia.alt}
@@ -111,7 +116,7 @@ const Services02 = () => {
           </div>
 
           {/* Right column */}
-          <div className="col-span-12 md:col-span-4 space-y-4 md:space-y-6">
+          <div className="md:col-span-4 space-y-4 md:space-y-6">
             {SERVICES_CONTENT.right.infos.map((it, i) => (
               <InfoCard key={i} title={it.title} subtitle={it.subtitle} />
             ))}

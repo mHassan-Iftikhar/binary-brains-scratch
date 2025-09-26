@@ -2,9 +2,11 @@
 
 import React, { useState } from "react";
 
+import Image from "next/image";
+
 const sidebarCards = [
   {
-    title: "Technology",
+    title: "Technologies",
     info: (
       <p className="text-sm">
         We use advanced carbon nano-structures for efficient energy capture and
@@ -13,7 +15,7 @@ const sidebarCards = [
         Our technology is designed for sustainability and scalability.
       </p>
     ),
-    bg: "bg-[#181818] text-white",
+    hoverBg: "bg-[#c1e7f7]",
   },
   {
     title: "Features",
@@ -24,7 +26,7 @@ const sidebarCards = [
         Tailored to meet diverse energy needs.
       </p>
     ),
-    bg: "bg-[#181818] text-white",
+    hoverBg: "bg-[#ffe6c7]",
   },
   {
     title: "Contact Us",
@@ -32,15 +34,30 @@ const sidebarCards = [
       <p className="text-sm">
         Reach out for collaborations or product inquiries.
         <br />
-        We're here to help you power your future.
+        We&apos;re here to help you power your future.
       </p>
     ),
-    bg: "bg-[#181818] text-white",
+    hoverBg: "bg-[#f7c1c1]",
   },
 ];
 
+const aboutUs = {
+  title: "About Us",
+  info: (
+    <p className="text-sm">
+      SEEDS are Sustainable Energy Efficient Designed Structures.
+      <br />
+      We provide energy generation and capture solutions by formulating
+      printable inks using advanced carbon based nano-structures.
+      <br />
+      These are formed into bespoke auxiliary power systems to support power
+      demands.
+    </p>
+  ),
+  bg: "bg-[#eaf6fa]",
+};
+
 const SectionHero = () => {
-  // -1 means About Us is open by default
   const [hovered, setHovered] = useState<number | null>(-1);
 
   return (
@@ -49,10 +66,13 @@ const SectionHero = () => {
       <div className="w-[80vw] flex flex-col">
         {/* Image Area */}
         <div className="w-[78vw] h-[34vw] relative rounded-2xl overflow-hidden m-2 flex items-center justify-center">
-          <img
+          <Image
             src="/images/04.png"
             alt="Engines of Creation"
             className="object-cover w-full h-full opacity-80"
+            fill
+            sizes="20vw"
+            priority
           />
         </div>
         {/* Title Area */}
@@ -65,44 +85,35 @@ const SectionHero = () => {
       <div className="w-[340px] flex flex-col gap-3 p-2">
         {/* About Us Card */}
         <div
-          className={`bg-[#eaf6fa] rounded-2xl p-8 text-black mb-2 flex flex-col justify-center transition-all duration-500 ease-in-out relative overflow-hidden`}
+          className={`${aboutUs.bg} rounded-2xl p-8 text-black mb-2 flex flex-col justify-center transition-all duration-500 ease-in-out relative overflow-hidden`}
           style={{
-            minHeight: hovered === -1 ? "220px" : "60px",
+            minHeight: hovered === -1 ? "22.3vw" : "100px",
+            height: hovered === -1 ? "22.3vw" : "100px",
             boxShadow: hovered === -1 ? "0 8px 32px rgba(0,0,0,0.15)" : "",
           }}
-          onMouseEnter={() => setHovered(-1)}
-          onMouseLeave={() => setHovered(null)}
         >
-          <h2 className="text-lg font-bold mb-2">About Us</h2>
+          <h2 className="text-lg font-bold mb-2">{aboutUs.title}</h2>
           <div
             className={`transition-opacity duration-500 ease-in-out ${
               hovered === -1 ? "opacity-100" : "opacity-0 h-0"
             }`}
           >
-            {hovered === -1 && (
-              <p className="text-sm">
-                SEEDS are Sustainable Energy Efficient Designed Structures.
-                <br />
-                We provide energy generation and capture solutions by formulating
-                printable inks using advanced carbon based nano-structures.
-                <br />
-                These are formed into bespoke auxiliary power systems to support power
-                demands.
-              </p>
-            )}
+            {hovered === -1 && aboutUs.info}
           </div>
         </div>
         {/* Other Cards with hover effect */}
         {sidebarCards.map((card, idx) => (
           <div
             key={card.title}
-            className={`rounded-2xl p-8 mb-2 min-h-[60px] cursor-pointer transition-all duration-500 ease-in-out relative overflow-hidden ${card.bg}`}
+            className={`rounded-2xl p-8 mb-2 cursor-pointer transition-all duration-500 ease-in-out relative overflow-hidden ${
+              hovered === idx ? card.hoverBg : "bg-[#181818] text-white"
+            }`}
             onMouseEnter={() => setHovered(idx)}
-            onMouseLeave={() => setHovered(null)}
+            onMouseLeave={() => setHovered(-1)}
             style={{
+              minHeight: hovered === idx ? "22.3vw" : "100px",
+              height: hovered === idx ? "22.3vw" : "100px",
               boxShadow: hovered === idx ? "0 8px 32px rgba(0,0,0,0.15)" : "",
-              minHeight: hovered === idx ? "220px" : "60px",
-              background: hovered === idx ? "#eaf6fa" : "#181818",
               color: hovered === idx ? "#222" : "#fff",
             }}
           >
@@ -112,11 +123,7 @@ const SectionHero = () => {
                 hovered === idx ? "opacity-100" : "opacity-0 h-0"
               }`}
             >
-              {hovered === idx && (
-                <div className="text-black">
-                  {card.info}
-                </div>
-              )}
+              {hovered === idx && <div className="text-black">{card.info}</div>}
             </div>
           </div>
         ))}

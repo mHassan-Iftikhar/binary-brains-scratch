@@ -1,11 +1,16 @@
 "use client";
 
-import { AnimatePresence, motion, useInView } from "framer-motion";
-import React, { useRef } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useState } from "react";
 import Image from "next/image";
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/effect-creative";
+import "swiper/css/pagination";
+import "swiper/css/autoplay";
+
 import { cn } from "@/lib/utils";
-import HorizontalCards from "./verticalCards";
 
 const Skiper53 = () => {
   const images = [
@@ -43,31 +48,23 @@ const Skiper53 = () => {
   ];
 
   return (
-    <div className="block md:hidden w-screen overflow-visible">
-      <HoverExpand_002 className="" images={images} />
+    <div className="lg:hidden
+     flex h-full w-full items-center justify-center mb-40 overflow-hidden bg-[#f5f4f3]">
+      <HorizontalCards className="" images={images} />
     </div>
   );
 };
 
 export { Skiper53 };
 
-const HoverExpand_002 = ({
+const HorizontalCards = ({
   images,
   className,
 }: {
   images: { src: string; alt: string; code: string }[];
   className?: string;
 }) => {
-  // Create refs for each card
-  const cardRefs = images.map(() => useRef<HTMLDivElement>(null));
-  // Create inView for each ref
-  const inViews = cardRefs.map((ref) =>
-    useInView(ref, {
-      amount: 0.7,
-      once: true,
-      margin: "0px 0px -20% 0px",
-    })
-  );
+  const [activeImage, setActiveImage] = useState<number | null>(1);
 
   return (
     <motion.div
@@ -77,10 +74,7 @@ const HoverExpand_002 = ({
         duration: 0.3,
         delay: 0.5,
       }}
-      className={cn(
-        "relative min-h-[220vh] w-full max-w-none px-5 lg:hidden overflow-x-hidden",
-        className
-      )}
+      className={cn("relative w-full max-w-6xl px-5", className)}
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -88,19 +82,21 @@ const HoverExpand_002 = ({
         transition={{ duration: 0.3 }}
         className="w-full"
       >
-        <div className="relative w-full flex flex-col gap-1 pb-40">
+        <div className="flex w-full flex-col items-center justify-center gap-1">
           {images.map((image, index) => (
             <motion.div
               key={index}
-              ref={cardRefs[index]}
-              className="group sticky top-0 overflow-hidden rounded-3xl w-full"
-              style={{ top: `${index * 3.5}rem` }}
-              initial={{ height: "3rem" }}
-              animate={{ height: inViews[index] ? "28rem" : "3rem" }}
-              transition={{ type: "tween", duration: 0.25, ease: "linear" }}
+              className="group relative cursor-pointer overflow-hidden rounded-3xl"
+              initial={{ height: "2.5rem", width: "24rem" }}
+              animate={{
+                height: activeImage === index ? "24rem" : "2.5rem",
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              onClick={() => setActiveImage(index)}
+              onHoverStart={() => setActiveImage(index)}
             >
               <AnimatePresence>
-                {inViews[index] && (
+                {activeImage === index && (
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -110,7 +106,7 @@ const HoverExpand_002 = ({
                 )}
               </AnimatePresence>
               <AnimatePresence>
-                {inViews[index] && (
+                {activeImage === index && (
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
@@ -128,8 +124,10 @@ const HoverExpand_002 = ({
                 className="size-full object-cover"
                 alt={image.alt}
                 fill
-                sizes="100vw"
-                priority={index === 0}
+                sizes="(max-width: 768px) 100vw,
+                (max-width: 1200px) 50vw,
+                33vw"
+                priority
               />
             </motion.div>
           ))}
@@ -140,3 +138,4 @@ const HoverExpand_002 = ({
 };
 
 export default HorizontalCards;
+

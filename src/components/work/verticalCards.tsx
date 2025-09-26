@@ -3,6 +3,8 @@
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
 
+import Image from "next/image";
+
 import { cn } from "@/lib/utils";
 
 const Skiper52 = () => {
@@ -126,10 +128,13 @@ const VerticalCards = ({
                   </motion.div>
                 )}
               </AnimatePresence>
-              <img
+              <Image
                 src={image.src}
                 className="size-full object-cover"
                 alt={image.alt}
+                fill
+                sizes="(min-width: 768px) 28rem, 100vw"
+                priority={index === 0}
               />
             </motion.div>
           ))}
