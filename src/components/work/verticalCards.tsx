@@ -2,9 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import React, { useState } from "react";
-
 import Image from "next/image";
-
 import { cn } from "@/lib/utils";
 
 const Skiper52 = () => {
@@ -12,47 +10,56 @@ const Skiper52 = () => {
     {
       src: "/images/01.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 01",
+      info: "Project 1: Creative branding for startups.",
     },
     {
       src: "/images/02.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 02",
+      info: "Project 2: Modern web design solutions.",
     },
     {
       src: "/images/03.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 03",
+      info: "Project 3: E-commerce platform development.",
     },
     {
       src: "/images/05.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 04",
+      info: "Project 4: UI/UX for mobile applications.",
     },
     {
       src: "/images/06.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 05",
+      info: "Project 5: Digital marketing campaign.",
     },
     {
       src: "/images/01.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 06",
+      info: "Project 6: Content creation and strategy.",
     },
     {
       src: "/images/02.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 07",
+      info: "Project 7: App development for business.",
     },
     {
       src: "/images/03.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 08",
+      info: "Project 8: Support & maintenance services.",
     },
     {
       src: "/images/04.png",
       alt: "Illustrations by my fav AarzooAly",
-      code: "# 23",
+      code: "# 09",
+      info: "Project 9: SEO optimization for growth.",
     },
   ];
 
@@ -69,7 +76,7 @@ const VerticalCards = ({
   images,
   className,
 }: {
-  images: { src: string; alt: string; code: string }[];
+  images: { src: string; alt: string; code: string; info: string }[];
   className?: string;
 }) => {
   const [activeImage, setActiveImage] = useState<number | null>(1);
@@ -104,30 +111,6 @@ const VerticalCards = ({
               onClick={() => setActiveImage(index)}
               onHoverStart={() => setActiveImage(index)}
             >
-              <AnimatePresence>
-                {activeImage === index && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute h-full w-full bg-gradient-to-t from-black/40 to-transparent"
-                  />
-                )}
-              </AnimatePresence>
-              <AnimatePresence>
-                {activeImage === index && (
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute flex h-full w-full flex-col items-end justify-end p-4"
-                  >
-                    <p className="text-left text-xs text-white/50">
-                      {image.code}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
               <Image
                 src={image.src}
                 className="size-full object-cover"
@@ -139,6 +122,19 @@ const VerticalCards = ({
             </motion.div>
           ))}
         </div>
+        {/* Info at the bottom of the cards container */}
+        {activeImage !== null && (
+          <div className="w-full flex justify-center mt-20">
+            <div className="bg-black/60 rounded-3xl p-4 max-w-md w-full">
+              <p className="text-left text-md text-white/50">
+                {images[activeImage].code}
+              </p>
+              <p className="text-left text-lg text-white mt-2">
+                {images[activeImage].info}
+              </p>
+            </div>
+          </div>
+        )}
       </motion.div>
     </motion.div>
   );

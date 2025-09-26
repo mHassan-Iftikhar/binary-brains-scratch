@@ -33,7 +33,7 @@ const AboutHero = () => {
           {/* Paragraph right */}
           <div className="col-span-12 md:col-span-5 md:col-start-7">
             <div className="border-l-2 border-black pl-4 md:pl-6">
-              <p className="text-sm leading-relaxed">
+              <p className="text-md leading-relaxed">
                 At Binary Brains, we specialize in turning ideas into impactful
                 digital solutions. Our team blends creativity with cutting-edge
                 technology to design and build software that drives innovation,

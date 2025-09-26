@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Plus, ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -55,7 +56,7 @@ const Footer = () => {
             className="flex flex-col space-y-8 md:flex-row md:items-center md:justify-between md:space-y-0"
           >
             {/* Contact Email */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 z-99">
               <span className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl">
                 Contact Binary Brains at:
               </span>
@@ -63,7 +64,7 @@ const Footer = () => {
                 href="mailto:binarybrainsofficial@gmail.com"
                 className="group flex items-center space-x-1 text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-medium hover:text-gray-300 transition-colors cursor-pointer text-[#0f7ac6]"
               >
-                <span>binarybrainsofficial@gmail.com</span>
+                <Link className="cursor-pointer" href={"mailto:binarybrainsofficial@gmail.com"}>binarybrainsofficial@gmail.com</Link>
                 <ArrowUpRight className="h-4 w-4 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
