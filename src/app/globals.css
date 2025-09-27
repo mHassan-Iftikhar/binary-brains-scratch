@@ -2,8 +2,8 @@
 
 /* Poppins Font */
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/Poppins-Regular.ttf') format('truetype');
+  font-family: "Poppins";
+  src: url("/fonts/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -18,14 +18,24 @@
   font-display: swap;
 }
 
-.font-humane {
-  font-family: "Humane", system-ui, -apple-system, sans-serif;
-}
-
 /* Thunder Font */
 @font-face {
   font-family: "Thunder";
   src: url("/Thunder-Black.ttf") format("opentype");
+}
+
+/* HardBop */
+@font-face {
+  font-family: "HardBop";
+  src: url("/Hardbop-semibold.otf") format("opentype");
+}
+
+.font-poppins {
+  font-family: "Poppins", system-ui, -apple-system, sans-serif;
+}
+
+.font-humane {
+  font-family: "Humane", system-ui, -apple-system, sans-serif;
 }
 
 .font-thunder {
@@ -34,6 +44,10 @@
 
 .font-lausanne {
   font-family: "lausanne", system-ui, -apple-system, sans-serif;
+}
+
+.font-hardbop {
+  font-family: "HardBop", system-ui, -apple-system, sans-serif;
 }
 
 /* Utility classes for custom colors */
@@ -76,4 +90,3 @@
   border-radius: 9999px;
   /* rounded-full */
 }
-

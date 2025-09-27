@@ -134,7 +134,7 @@ const VerticalCards = ({
               </p>
             </div>
           </div>
-        )}
+        )}=
       </motion.div>
     </motion.div>
   );

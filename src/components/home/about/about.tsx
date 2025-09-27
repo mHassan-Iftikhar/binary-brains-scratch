@@ -41,7 +41,7 @@ const About = () => {
 
         // Animate characters to white color
         textTimeline.to(split.chars, {
-          duration: 1,
+          duration: 0,
           color: "white",
           stagger: 0.02,
           ease: "power2.out",

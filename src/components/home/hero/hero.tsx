@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Terminal } from "lucide-react";
+import { ArrowUpRight, Terminal } from "lucide-react";
 import Image from "next/image";
 
 const page = () => {
@@ -59,8 +59,8 @@ const page = () => {
       <div className="hidden md:flex w-full h-screen items-center justify-center relative z-20">
         <div className="w-full text-7xl sm:text-6xl md:text-6xl lg:text-[6rem] xl:text-[5rem] leading-[0.8] sm:leading-[0.8] md:leading-[0.8] lg:leading-[0.8] xl:leading-[11rem] font-medium px-4 sm:px-6 text-zinc-200 flex items-center justify-between">
           <div className="leading-[1] flex flex-col items-start text-white">
-            <div className="flex items-center">
-              YOUR{" "}
+            <div className="flex flex-col text-[20rem] leading-[15rem] items-start font-hardbop">
+              YOUR
               <span className="gradient-text inline-block relative border ml-2">
                 IDEA
               </span>
@@ -70,14 +70,15 @@ const page = () => {
               <span>CREATIVE UI/UX & DEVELOPMENT</span>
             </div>
           </div>
-          <span className="leading-[1] flex flex-col items-end text-right text-white">
-            <span className="flex items-center">
+          <span className="leading-[15rem] text-[18rem] font-hardbop flex flex-col items-end text-right text-white">
+            <span className="flex items-end">
               OUR{" "}
               <a
-                className="text-lg md:text-sm lg:text-lg xl:text-2xl  bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-8 py-4 cursor-pointer"
+                className="flex items-center gap-2 hover:gap-4 hover:transition-all transition-all  text-lg md:text-sm lg:text-lg xl:text-2xl  bg-white/10 backdrop-blur-md border border-white/20 rounded-4xl ml-4 mb-4 font-poppins px-14 py-6 cursor-pointer"
                 href="/contact"
               >
                 GET IN TOUCH
+                <ArrowUpRight className="h-4 w-4 md:w-8 md:h-8 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </span>
             <span className="gradient-text inline-block relative">

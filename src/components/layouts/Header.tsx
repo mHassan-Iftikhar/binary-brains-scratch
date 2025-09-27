@@ -109,9 +109,13 @@ const Header = () => {
   return (
     <>
       {/* Header */}
-      <div className="w-full fixed top-0 left-0 z-50 selection:bg-white selection:text-black">
+      <div
+        className="w-full fixed top-0 md:left-0 md:right-0 z-50 
+                selection:bg-white selection:text-black 
+                md:flex md:justify-center md:items-center"
+      >
         <header
-          className={`rounded-full md:mx-8 mx-4 my-2 flex items-center justify-between px-6 md:px-8 py-4 shadow-2xl transition-all duration-300 ease-in-out ${
+          className={`rounded-full md:w-[60%] lg:md:w-[60%] md:mx-8 mx-4 my-2 flex items-center justify-between px-6 md:px-8 py-4 shadow-2xl transition-all duration-300 ease-in-out ${
             isDarkMode
               ? "bg-black/90 backdrop-blur-lg border border-white/20"
               : "bg-black/90 backdrop-blur-lg border border-white/20"
@@ -134,10 +138,10 @@ const Header = () => {
                   <Link
                     href={item.href}
                     onClick={handleNavigate(item.href)}
-                    className={`px-4 py-2 transition-all duration-300 backdrop-blur-md border font-medium ${
+                    className={`px-4 py-2 transition-all rounded-full duration-300 backdrop-blur-md border font-medium ${
                       item.href === activeHref
                         ? "bg-white text-black border-white rounded-full"
-                        : "bg-white/10 text-white border-white/20 hover:bg-white hover:text-black hover:rounded-full"
+                        : "bg-white/10 text-white border-white/20 hover:shadow-md hover:shadow- hover:shadow-zinc-400 hover:bg-white hover:text-black hover:rounded-full"
                     }`}
                   >
                     {item.label}
@@ -150,7 +154,7 @@ const Header = () => {
           {/* Desktop Button */}
           <Link
             href="/contact"
-            className="hidden !bg-white md:flex bg-gray-nav text-black rounded px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4 font-medium"
+            className="hidden !bg-white rounded-full md:flex bg-gray-nav text-black px-4 py-2 hover:!bg-white hover:rounded-full hover:text-black transition-all duration-300 items-center gap-2 hover:gap-4 font-medium"
           >
             Let&apos;s Talk
             <MoveUpRight size={16} />
@@ -207,7 +211,7 @@ const Header = () => {
                 <div className="mt-8">
                   <Link
                     href="/contact"
-                    className="bg-white rounded px-6 py-6 text-black font-medium flex-1 block text-center"
+                    className="bg-white rounded-full px-6 py-6 text-black font-medium flex-1 block text-center"
                     onClick={closeMobileMenu}
                   >
                     LET&apos;S TALK

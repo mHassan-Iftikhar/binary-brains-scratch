@@ -23,17 +23,14 @@ const ServicesPage = () => {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    // Dynamic import for SplitType
     import("split-type").then((SplitTypeModule) => {
       const SplitType = SplitTypeModule.default;
 
       if (titleRef.current && containerRef.current) {
-        // Split the title text
         const split = new SplitType(titleRef.current, {
           types: "chars",
         });
 
-        // Create timeline for animations
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
@@ -43,7 +40,6 @@ const ServicesPage = () => {
           },
         });
 
-        // Animate title characters
         tl.fromTo(
           split.chars,
           {
@@ -61,16 +57,13 @@ const ServicesPage = () => {
           }
         );
 
-        // Animate service images
         tl.fromTo(
           ".service-image",
           {
-            scale: 0,
             rotation: 45,
             opacity: 0,
           },
           {
-            scale: 1,
             rotation: 0,
             opacity: 1,
             duration: 0.6,
@@ -87,7 +80,6 @@ const ServicesPage = () => {
     };
   }, []);
 
-  // Service icons/images data
   const serviceImages = [
     {
       id: 1,
@@ -157,17 +149,26 @@ const ServicesPage = () => {
             onMouseLeave={handleServiceLeave}
           >
             <div
-              className={`rounded-xl overflow-hidden transition-all duration-500 relative ${
-                hoveredService?.id === service.id
-                  ? "w-32 h-32 md:w-40 md:h-40 scale-110 z-20"
-                  : "w-16 h-16 md:w-20 md:h-20 hover:scale-80"
-              }`}
+              className={`rounded-xl overflow-hidden transition-all duration-500 relative
+                ${
+                  hoveredService?.id === service.id
+                    ? "w-32 h-32 md:w-40 md:h-40 rotate-6 z-20"
+                    : "w-32 h-32 md:w-40 md:h-40"
+                }
+              `}
+              style={{
+                transform:
+                  hoveredService?.id === service.id
+                    ? "rotate(8deg) scale(1.15)"
+                    : "rotate(0deg) scale(1)",
+                zIndex: hoveredService?.id === service.id ? 20 : 1,
+              }}
             >
               {/* Fallback with gradient background if image fails */}
               <div className="w-full h-full flex items-center justify-center text-white font-bold text-xs relative z-10">
                 {hoveredService?.id === service.id ? (
                   <div className="text-center p-2">
-                    <div className="text-xs md:text-sm font-black mb-1">
+                    <div className="text-md md:text-lg font-black mb-1">
                       {service.title}
                     </div>
                     <div className="text-[8px] md:text-[10px] opacity-80 leading-tight">
@@ -192,7 +193,6 @@ const ServicesPage = () => {
                 }`}
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
-                  // Hide broken images, keep gradient fallback
                   if (target && target.style) {
                     target.style.display = "none";
                   }
