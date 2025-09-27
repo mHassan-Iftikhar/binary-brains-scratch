@@ -74,25 +74,28 @@ const Footer = () => {
                 href="https://www.linkedin.com/company/binary-brains/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
+                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-all flex items-center gap-2 hover:gap-3"
               >
                 LinkedIn
+                <ArrowUpRight className="h-4 w-4 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
                 href="https://www.instagram.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
+                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-all flex items-center gap-2 hover:gap-3"
               >
                 Instagram
+                <ArrowUpRight className="h-4 w-4 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
               <a
                 href="https://x.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-colors"
+                className="text-sm cursor-pointer sm:text-base md:text-lg lg:text-xl xl:text-2xl hover:text-gray-300 transition-all flex items-center gap-2 hover:gap-3"
               >
                 X
+                <ArrowUpRight className="h-4 w-4 md:w-6 md:h-6 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </nav>
           </motion.div>
